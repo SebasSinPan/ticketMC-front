@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TicketMC | Usuario</title>
+    <link rel="stylesheet" href="css/user.css">
+    <link rel="stylesheet" href="css/userAnimaciones.css">
+    <link rel="stylesheet" href="css/userMotionPreference.css">
+</head>
+<body>
+    <nav class="nav">
+        <p>TICKET MC</p>
+        <!-- <img src="" alt="logo_TicketMc"> -->
+        <ul>
+            <li>
+                <!-- <a class="acount" href="#">
+                <img src="#" alt="imagen de perfil">
+                </a> -->
+                <p></p>
+            </li>
+        </ul>
+    </nav>
+    <section class="main-container">
+        <main class="user">
+            <section class="user__container">
+                <article class="user__container--profile user__options">
+                    <img src="img/User_icon_user.png" alt="foto de perfil">
+                    <h3>Información personal</h3>
+                    <p>Nombre: <span>info</span></p>
+                    <p>Correo electrónico: <span>info</span></p>
+                    <p>Teléfono: <span>info</span></p>
+                </article>
+                <article class="user__container--tickets user__options">
+                    <div>
+                        <img src="img/User_icon_tickets.png" alt="ícono de tickets">
+                        <h3>Visualizar tickets</h3>
+                    </div>
+                    <p>Revisa y gestiona tus tickets actuales y pasados.</p>
+                    <button>Ver tickets</button>
+                </article>
+                <article class="user__container--data user__options">
+                    <div class="options--title">
+                        <img src="img/User_icon_user.png" alt="ícono de usuario">
+                        <h3>Modificación de la cuenta</h3>
+                    </div>
+                    <p>Actualiza tu información personal y de contacto.</p>
+                    <button id="user-data">Editar perfil</button>
+                    <dialog id="modalUser" class="modal modalUser">
+                        <div class="modal__titulo">
+                            <div class="modal__titlo--img">
+                                <img src="img/User_icon_user.png" alt="ícono de usuario">
+                            </div>
+                            <div class="modal__titulo--name">
+                                <h3>Editar perfil</h3>
+                            </div>
+                        </div>
+                        <div class="modal__contenido">
+                            <div class="modal__contenido--foto-perfil">
+                                <img src="img/User_icon_user.png" alt="imagen de perfil">
+                                <p>Cambiar imagen de perfil</p>
+                            </div>
+                            <div class="modal__contenido--datos-usuario">
+                                <div class="modal__contenido--datos-titulo">
+                                    <h4>Datos personales</h4>
+                                </div>
+                                <form action="">
+                                    <div class="modal__contenido--input">
+                                        <input type="text"
+                                                id="nombre" class="nombre"
+                                                placeholder="Nombre"
+                                                required
+                                        >
+                                        <label for="">Nombre</label>
+                                    </div>
+                                    <div class="modal__contenido--input">
+                                        <input type="email"
+                                                id="correo" class="correo"
+                                                placeholder="Correo"
+                                                required
+                                        >
+                                        <label for="" id="label-input-correo">Correo</label>
+                                    </div>
+                                    <div class="modal__contenido--input">
+                                        <input type="number"
+                                                id="teltefono" class="teltefono"
+                                                placeholder="Teléfono"
+                                                required
+                                        >
+                                        <label for="">Teléfono</label>
+                                    </div>
+                                    <button>Guardar</button>
+                                </form>
+                            </div>
+                        </div>
+                    </dialog>
+                </article>
+                <article class="user__container--stats user__options">
+                    <div class="options--title">
+                        <img src="img/User_icon_analitycs.png" alt="ícono de estadísticas">
+                        <h3>Estadísticas de tickets</h3>
+                    </div>
+                    <p>Visualiza métricas y análisis de tus tickets.</p>
+                    <button id="stats-data">Ver estadísticas</button>
+                    <dialog id="modalStats" class="modal modalStats">
+                        <div class="modal__titulo">
+                            <div class="modal__titlo--img">
+                                <img src="img/User_icon_analitycs.png" alt="ícono de usuario">
+                            </div>
+                            <div class="modal__titulo--name">
+                                <h3>Estadísticas</h3>
+                            </div>
+                        </div>
+                        <div class="modal__contenido">
+                            
+                        </div>
+                    </dialog>
+                </article>
+                <article class="user__container--support user__options">
+                    <div class="options--title">
+                        <img src="img/User_icon_bell.png" alt="ícono de soporte">
+                        <h3>Soporte</h3>
+                    </div>
+                    <p>Obtén ayuda y soporte para usar TicketMC.</p>
+                    <button id="help-data">Contactar soporte</button>
+                    <dialog id="modalHelp" class="modal modalHelp">
+                        <div class="modal__titulo">
+                            <div class="modal__titlo--img">
+                                <img src="img/User_icon_bell.png" alt="ícono de usuario">
+                            </div>
+                            <div class="modal__titulo--name">
+                                <h3>Soporte técnico</h3>
+                            </div>
+                        </div>
+                        <div class="modalHelp__contenido">   
+                            <div class="modal__contenidoHelp--informacion">
+                                <p>Si tiene algún problema con la plataforma o duda sobre el servicio, comuníquese con nuestro equipo técnico</p>
+                            </div>
+                            <form action="">
+                                <div class="modalHelp__contenido--asunto">
+                                    <label for="">Asunto</label>
+                                    <input type="text"
+                                        name="asunto" id="asunto" 
+                                        class="contenido--asunto-input"
+                                        required
+                                    >
+                                </div>
+                                <div class="modal__contenido--descripcion">
+                                    <label for="">Mensaje</label>
+                                    <textarea name="mensaje" id="mensaje" 
+                                            class="contenido--descripcion-input"
+                                            required
+                                    >
+                                    </textarea>
+                                </div>
+                                <button>Enviar</button>
+                            </form>
+                        </div>
+                    </dialog>
+                </article>
+                <article class="user__container--close user__options">
+                    <div class="options--title">
+                        <img src="img/User_icon_exit.png" alt="ícono de cerrar sesión">
+                        <h3>Cerrar sesión</h3>
+                    </div>
+                    <p>Cierra tu sesión actual en TicketMC.</p>
+                    <button id="closeBtn">Cerrar sesión</button>
+                    <dialog id="modalClose" class="modalClose">
+                        <h3>Cerrar sesión</h3>
+                        <p>¿Está seguro que desea que desea cerrar sesión?</p>
+                        <div class="modalClose__btns">
+                            <button id="modalClose__btns--close">Cancelar</button>
+                            <button>Cerrar sesión</button>
+                        </div>
+                    </dialog>
+                </article>
+            </section>
+            <div id="curtain" class="curtain"></div>
+        </main>
+        <div class="decoration">
+        </div>
+    </section>
+    <script src="js/user.js"></script>
+    <script src="js/userDarkTheme.js"></script>
+</body>
+</html>

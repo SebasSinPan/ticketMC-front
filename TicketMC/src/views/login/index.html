@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/loginAnimations.css">
+    <title>Ticket MC | Login</title>
+</head>
+<body id="body">
+    <img class="general__background" id="general__background"
+    src="img/login-bg-2400.png" 
+    alt="imagen_de_fondo"
+    srcset="
+        img/login-bg-2400.png 1550w, 
+        img/login-bg-1280.png 1280w, 
+        img/login-bg-800.png 800w, 
+        img/login-bg-mobile.png 450w"
+    sizes="
+        (min-width: 1550px) 2400px, 
+        (min-width: 1280px) 1280px, 
+        (min-width: 800px) 800px, 
+        100vw"
+    >
+    <main>
+        <section id="singup" class="singup">
+            <h2>Registrarse</h2>
+            <p>¿Tienes una cuenta? <span><a id="usarIniciarSesion" href="">Iniciar sesión</a></span></p>
+            <form action="" id="singup__form" class="singup__form">
+                <div class="singup__input">
+                    <input type="text" 
+                            name="nombre" id="nombreRegistro"
+                            placeholder="Nombre" required
+                            autocomplete="off"
+                    >
+                    <label for="nombre">Nombre</label>
+                    <p id="nameErrorMessage">Mensaje de error</p>
+                </div>
+                <div class="singup__input">
+                    <input type="email" 
+                        name="correo" id="correoRegistro"
+                        placeholder="Correo electrónico" required
+                        autocomplete="off"
+                    >
+                    <label for="correo">Correo electrónico</label>
+                    <p id="emailErrorMessage">Mensaje de error</p>
+                </div>
+                <div class="singup__input">
+                    <input type="password" 
+                        name="contraseña" id="contrasennaRegistro"
+                        placeholder="Contraseña" required
+                    >
+                    <label for="contraseña">Contraseña</label>
+                    <p id="passErrorMessage">Mensaje de error</p>
+                </div>
+                <div class="singup__input">
+                    <input type="password" 
+                        name="contraseña_rep" id="contrasennaRegistro_rep"
+                        placeholder="Confirmar contraseña" required
+                    >
+                    <label for="contraseña_rep">Confirmar contraseña</label>
+                </div>
+                <div class="singup__condiciones">
+                    <input type="checkbox" 
+                            name="condiciones" id="condiciones"
+                            required
+                    >
+                    <p>He leído y acepto los <a id="verTerminos" href="#">términos y condiciones</a></p>
+                </div>
+                <button type="submit" id="singup__form--btn" form="singup__form">Registrarse</button>
+            </form>
+        </section>
+        <section id="login" class="login">
+            <h2>Iniciar sesión</h1>
+            <p>¿No tienes una cuenta? <span><a id="usarRegistrarse" href="">Crear cuenta</a></span></p>
+            <form id="login__form" class="login__form" action="">
+                <div class="login__input">
+                    <input type="text" 
+                        name="correoLog" id="correoLogin" 
+                        placeholder="Correo" required
+                    >
+                    <label for="correoLog">Correo</label>
+                </div>
+                <div class="login__input">
+                    <input type="password" 
+                        name="contraseñaLog" id="passLogin" 
+                        placeholder="Contraseña" required
+                    >
+                    <label for="contraseñaLog">Contraseña</label>
+                </div>
+                <p id="login__form--message">El correo o la contraseña no son correctos</p>
+                <button id="login__form--btn" type="submit" 
+                >Ingresar</button>
+            </form>
+            <p>----------------------- Inicia sesión con -----------------------</p>
+            <div class="login__options">
+                <button><img src="img/login_facebook.png" alt="logo de facebook"></button>
+                <button><img src="img/login_mail.png" alt="logo de gmail/google"></button>
+                <button><img src="img/login_github.png" alt="logo de github"></button>
+            </div>
+        </section>
+        <div class="cover" id="cover"></div>
+    </main>
+    <dialog id="terminosModal">
+        <div>
+            <h2>Términos y condiciones</h2>
+            <p>Fecha de entrada en rigor: <span id="condiciones__fecha">[Fecha]</span></p>
+            <div class="condiciones">
+                <h3>Aceptación de términos</h3>
+                <p>Al instalar y utilizar el software "Ticket MC" (en adelante, el "Software"), usted acepta estos términos y condiciones (en adelante, los "Términos"). Si no está de acuerdo con estos Términos, no debe instalar ni utilizar el Software.</p>
+                <h3>Definiciones</h3>
+                <ul>
+                    <li><span>Licenciante: </span>Ticket MC, desarrollador del Software.</li>
+                    <li><span>Licenciatario: </span>La empresa o entidad legal que adquiere o recibe la licencia de uso del Software.</li>
+                </ul>    
+                <h3>Objeto del Contrato</h3>
+                <p>El Licenciante otorga al Licenciatario una licencia no exclusiva, intransferible y revocable para utilizar el Software en el contexto de su actividad comercial, permitiendo la gestión y generación de tickets de solicitudes en el área de soporte técnico.</p>
+                <h3>Uso del Software</h3>
+                <p>El Licenciatario puede instalar y utilizar el Software en varios dispositivos, pero no puede modificarlo, distribuirlo, venderlo o alquilarlo. El uso del Software requiere un sistema operativo compatible (Windows o Linux) y la creación de perfiles para todos los usuarios.</p>
+                <h3>Propiedad Intelectual</h3>
+                <p>El Software es propiedad del Licenciante y está protegido por las leyes colombianas de propiedad intelectual. El Licenciatario no adquiere ningún derecho de propiedad sobre el Software.</p>
+                <h3>Derechos y Obligaciones del Licenciante</h3>
+                <ul>
+                    <li>Derechos y Obligaciones del Licenciante</li>
+                    <li>Proporcionará al Licenciatario actualizaciones o mejoras según lo acordado.</li>
+                </ul>
+                <h3>Derechos y Obligaciones del Licenciatario</h3>
+                <ul>
+                    <li>Tiene derecho a instalar y personalizar el Software para sus fines internos.</li>
+                    <li>No podrá sublicenciar, vender, alquilar ni distribuir el Software sin el consentimiento del Licenciante.</li>
+                    <li>Mantendrá la confidencialidad de la información propietaria del Software.</li>
+                </ul>
+                <h3>Limitaciones de Responsabilidad</h3>
+                <p>El Licenciante no será responsable de daños directos, indirectos o consecuentes derivados del uso del Software.</p>
+                <h3>Duración</h3>
+                <p>La licencia de uso del Software será permanente en caso de venta a otras empresas. En caso de terminación, el Licenciatario deberá cesar el uso y destruir todas las copias del Software.</p>
+                <h3>Terminación</h3>
+                <p>Esta Licencia es efectiva hasta que una de las partes la termine. El Licenciatario puede terminarla destruyendo todas las copias del Software. La Licencia terminará automáticamente si se incumplen estos Términos.</p>
+                <h3>Resolución de Conflictos</h3>
+                <p>Cualquiera de las Partes podrá dar por terminado este Contrato si la otra parte incumple sus obligaciones y no remedia dicho incumplimiento dentro de 30 (treinta) días tras recibir una notificación escrita.</p>
+                <h3>Ley Aplicable</h3>
+                <p>Estos Términos se regirán por las leyes 23 de 1982 y 603 de 2000 de Colombia, así como por la Decisión Andina 351 de 1993.</p>
+            </div>
+        </div>
+    </dialog>
+    <script src="js/login.js"></script>
+    <script src="js/loginDarkTheme.js"></script>
+
+    <script src="../../services/registrarUsuario.js"></script>
+    <script src="../../services/iniciarSesion.js"></script>
+</body>
+</html>

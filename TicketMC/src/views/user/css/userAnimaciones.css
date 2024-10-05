@@ -1,0 +1,98 @@
+.aparicionModalUser{
+    animation: CrecerUser .6s both ease-out .2s,
+                ShowUser .5s both ease;
+}
+
+.aparicionModalStats{
+    animation: ShowStats .5s both ease,
+                CrecerStats .6s both ease-out .2s;
+}
+
+.aparicionModalHelp{
+    animation: ShowHelp .5s both ease, 
+                CrecerHelp .6s both ease-out .2s;
+}
+
+.aparicionModal800px{
+    animation: ShowModal800px .8s both ease;
+}
+
+@keyframes ShowUser {
+    from{
+        opacity: 0;
+        right: var(--curtain-animation-right);
+        top: var(--curtain-animation-top);
+    }to{
+        opacity: 1;
+        top: var(--curtain-top);
+        right: var(--curtain-right);
+    }
+}
+
+@keyframes ShowStats {
+    from{
+        opacity: 0;
+        right: var(--curtain-animation-right);
+        top: var(--curtain-animation-top);
+    }to{
+        opacity: 1;
+        top: var(--curtain-top);
+        right: var(--curtain-right);
+    }
+}
+
+@keyframes ShowHelp {
+    from{
+        opacity: 0;
+        right: var(--curtain-animation-right);
+        top: var(--curtain-animation-top);
+    }to{
+        opacity: 1;
+        top: var(--curtain-top);
+        right: var(--curtain-right);
+    }
+}
+
+@keyframes CrecerUser {
+    from{
+        width: 355px;
+        height: 115px;
+    }to{
+        width: 685px;
+        height: 510px;
+    }
+}
+
+@keyframes CrecerStats {
+    from{
+        width: 355px;
+        height: 115px;
+        top: 153px;
+    }to{
+        width: 685px;
+        height: 510px;
+        top: 20px;
+    }
+}
+
+@keyframes CrecerHelp {
+    from{
+        width: 355px;
+        height: 115px;
+        top: 280px;
+    }to{
+        width: 685px;
+        height: 510px;
+        top: 20px;
+    }
+}
+
+@keyframes ShowModal800px {
+    from{
+        opacity: 0;
+        top: -50px;
+    }to{
+        opacity: 1;
+        top: 12%;
+    }
+}

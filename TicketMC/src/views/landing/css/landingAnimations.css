@@ -1,0 +1,94 @@
+.funcion__paso1,
+.funcion__paso2,
+.funcion__paso3,
+.funcion__img1,
+.funcion__img2,
+.funcion__img3{
+    animation: Aparecer linear both;
+    animation-timeline: view();
+    animation-range: entry 20% cover 35%;
+}
+
+@keyframes Aparecer{
+    from{
+        opacity: 0;
+    }to{
+        opacity: 1;
+    }
+}
+
+/*Desplazamiento características*/
+
+.caracteristicas__slider{
+    animation: Desplazar linear forwards;
+    animation-timeline: --slider;
+    animation-range: contain 20% contain 90%;
+}
+
+@keyframes Desplazar{
+    to{
+        transform: translateX(calc(-2410px + var(--slider-width)));
+    }
+}
+
+/*Corte al cambiar de palabras en el banner principal*/
+
+.banner__container--title span:first-child{
+    animation: CambiarPalabras 3s infinite reverse;
+    color: transparent;
+}
+
+@keyframes CambiarPalabras{
+    0%, 100%{
+        clip-path: polygon(0 100%, 0 80%, 12% 86%, 20% 100%);
+    }
+    2.5%, 92.5%{
+        clip-path: polygon(0 100%, 0 60%, 19% 79%, 40% 100%);
+    }
+    5%, 90%{
+        clip-path: polygon(0 100%, 0 40%, 29% 68%, 60% 100%);
+    } 
+    7.5%, 87.5%{
+        clip-path: polygon(0 100%, 0 20%, 41% 60%, 81% 100%);
+    } 
+    10%, 85%{
+        clip-path: polygon(0 100%, 0 0, 50% 50%, 100% 100%);
+    }
+    12.5%, 82.5%{
+        clip-path: polygon(20% 0, 69% 50%, 100% 80%, 100% 100%, 0 100%, 0 0);
+    }
+    15%, 80%{
+        clip-path: polygon(40% 0, 69% 28%, 100% 60%, 100% 100%, 0 100%, 0 0);
+    }
+    17.5%, 77.5%{
+        clip-path: polygon(60% 0, 84% 22%, 100% 40%, 100% 100%, 0 100%, 0 0);
+    } 
+    20%, 75%{
+        clip-path: polygon(80% 0, 89% 10%, 100% 20%, 100% 100%, 0 100%, 0 0);
+    } 
+    22.5%{
+        clip-path: polygon(100% 0, 100% 0, 100% 0, 100% 100%, 0 100%, 0 0);
+    }
+}
+
+/*Transición entre redirecciones*/
+
+.fade-background {
+    animation: CambiarSeccion 1s both;
+}
+
+.apear-background {
+    animation: CambiarSeccion 1s both reverse;
+    animation-delay: 1s;
+}
+
+@keyframes CambiarSeccion {
+    from {
+        clip-path: circle(0.0% at 0 100%);
+        background-color: var(--bg-light-white);
+    }
+    to {
+        clip-path: circle(141.4% at 0 100%);
+        background-color: var(--bg-light-white);
+    }
+}

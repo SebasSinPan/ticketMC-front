@@ -1,0 +1,22 @@
+@media (refers-reduced-motion: reduce){
+    .funcion__paso1,
+    .funcion__paso2,
+    .funcion__paso3,
+    .funcion__img1,
+    .funcion__img2,
+    .funcion__img3{
+        animation: none;
+    }
+
+    .banner__container--title span:first-child{
+        animation: none;
+    }
+
+    .fade-background{
+        animation: none;
+    }
+
+    .apear-background{
+        animation: none;
+    }
+}

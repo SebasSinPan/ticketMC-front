@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TicketMC | Mis tickets</title>
+    <link rel="stylesheet" href="css/tickets.css">
+    <link rel="stylesheet" href="css/ticketAnimations.css">
+</head>
+<body>
+    <header>
+        <!-- <a href="#">TicketMC</a> -->
+        <section class="logo">
+            <p>
+                TicketMC
+            </p>
+        </section>
+        <section class="profile">
+            <!-- <img src="" alt="imagen_usuario"> -->
+            <span>Mi perfil</span>
+            <p></p>
+            <ul>
+                <li>Mi perfil</li>
+                <li>Cerrar sesión</li>
+            </ul>
+        </section>
+    </header>
+    <section class="container">
+        <nav class="container__nav">
+            <section>
+                <h2 class="container__nav--title">Categorias</h2>
+                <ul class="container__nav--list">
+                    <li><a href="">Mis tickets</a></li>
+                    <li><a href="">Tickets activos</a></li>
+                    <li><a href="">Historial de tickets</a></li>
+                </ul>
+            </section>
+            <section class="container__nav--config">
+                <span>Configuración</span>
+            </sectio>
+        </nav>
+        <main class="container__ticket">
+            <dialog id="modal" class="container__ticket--details">
+                <section class="details">
+                    <div class="details__header--container">
+                        <div class="details__header">
+                            <div class="details__header--title">
+                                <h2 class="details--title">Título del ticket</h2>
+                            </div>
+                            <div class="details__header--response">
+                                <button>Responder</button>
+                            </div>
+                        </div>
+                        <div class="details__data">
+                            <div class="details__data--state">
+                                <p>
+                                    <span>Estado: </span><span class="details--state">Estado del ticket</span>
+                                </p>
+                                <p>
+                                    <span>Prioridad: </span><span class="details--prio">Prioridad del ticket</span>
+                                </p>
+                            </div>
+                            <div class="details__data--date">
+                                <p>
+                                    <span>Fecha: </span>Fecha del ticket
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="details__description">
+                        <p class="details--description">
+                            Lorem: Ipsum dolor sit sit amet, consectetur adipiscing elit. Donec ornare enim a efficitur laoreet. Sed ullamcorper laoreet magna, eget ornare justo ornare eu. Aenean sagittis, ipsum a laoreet maximus, leo mauris vehicula magna, ut facilisis ipsum lacus eget ipsum. Vestibulum elementum elit in nisi tempus gravida. Quisque sit amet ante. eget ornare justo ornare eu. Aenean sagittis, ipsum a laoreet maximus, leo mauris vehicula magna, ut facilisis ipsum lacus eget ipsum. Vestibulum elementum e
+                        </p>
+                    </div>
+                    <div class="details__images">
+                        <p>Imágenes anexas</p>
+                        <div>
+                            <p></p>
+                            <p></p>
+                            <p></p>
+                        </div>
+                    </div>
+                </section>
+            </dialog>       
+            <section class="container__ticket--filters">
+                <section class="container__ticket--type">
+                    <button>Recibidos</button>
+                    <button>Solucionados</button>
+                </section>
+                <section class="container__ticket--searcher">
+                    <div>
+                        <input type="text" placeholder="Buscar">
+                    </div>
+                    <div>
+                        <button></button>
+                    </div>
+                </section>
+            </section>
+            <section class="container__ticket--ticket">
+                <div class="ticket select-ticket">    
+                    <div class="ticket--title">
+                        <h3 class="title--name">Lorem Ipsum dolor sit amet sit met</h3>
+                        <span class="title--prio ticket-prio">media</span>
+                    </div>
+                    <div class="ticket--description">
+                        <p>Lorem Ipsum Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum</p>
+                    </div>
+                    <div class="ticket--state">
+                        <span class="ticket-state">Completado</span>
+                    </div>
+                </div>
+                
+            </section>
+            <section class="container__ticket--create">
+                <div id="ticket--create-btn" class="create--icon">
+                    <img src="img/ticket_add_icon.png" alt="Ícono para crear tickets">
+                </div>
+                <dialog id="create__ticket" class="create__ticket">
+                    <div class="create__ticket--title">
+                        <h3>Crear nuevo ticket</h3>
+                        <div id="create__ticket-close">X</div>
+                    </div>
+                    <form id="formCrearTicket">
+                        <div class="create__ticket--name">
+                            <div class="ticket--name-container">
+                                <label for="">Título</label>
+                                <input type="text" id="create_ticket_name"
+                                        placeholder="Indique de forma breve su problema"
+                                        required    
+                                >
+                            </div>
+                        </div>
+                        <div class="create__ticket--description">
+                            <div class="ticket--description-container">
+                                <label for="">Descripción</label>
+                                <textarea name="description" id="create_ticket_description"
+                                            placeholder="Especifique, con detalles, las causas o características de su problema"
+                                            required
+                                ></textarea>
+                            </div>
+                        </div>
+                        <div class="create__ticket--prio">
+                            <label for="">Prioridad</label>
+                            <div class="ticket--prio-container">
+                                <input type="radio" id="create__ticket-prio-alta" class="ticket-prio-radio"
+                                        name="radio_opt_group" value="alta"
+                                        required
+                                >
+                                <label for="create__ticket-prio-alta">Alta</label>
+                                <input type="radio" id="create__ticket-prio-media" class="ticket-prio-radio"
+                                        name="radio_opt_group" value="media"
+                                >
+                                <label for="create__ticket-prio-media">Media</label>
+                                <input type="radio" id="create__ticket-prio-baja" class="ticket-prio-radio"
+                                        name="radio_opt_group" value="baja" checked
+                                >
+                                <label for="create__ticket-prio-baja">Baja</label>
+                            </div>
+                        </div>
+                        <div class="create__ticket--img">
+                            <label for="">Adjuntar archivos</label>
+                            <div class="ticket--img-container">
+                                <p>
+                                    <img src="img/ticket_upload_icon.png" alt="">
+                                    <input type="file" name="file" id="create_ticket_files"
+                                            accept="image/*"
+                                            multiple
+                                    >
+                                </p>
+                            </div>
+                        </div>
+                        <div class="create__ticket--btn">
+                            <div class="ticket--btn-container">
+                                <button id="btn--container-cancel">Cancelar</button>
+                                <button id="btn--container-create" type="submit"
+                                >Crear ticket</button>
+                            </div>
+                        </div>
+                    </form>
+                </dialog>
+            </section>
+        </main>
+    </div>
+    <script src="js/ticket.js"></script>
+    <script src="js/ticketStyle.js"></script>
+    <script src="js/ticketDarkTheme.js"></script>
+    <script src="js/ticketCreateTicket.js"></script>
+
+    <script src="../../services/crearTIckets.js"></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+@media (prefers-reduced-motion: reduce) {
+    .aparicionModalUser{
+        animation: none;
+    }
+
+    .aparicionModalStats{
+        animation: none;
+    }
+
+    .aparicionModalHelp{
+        animation: none;
+    }
+
+    .aparicionModal800px{
+        animation: none;
+    }
+}

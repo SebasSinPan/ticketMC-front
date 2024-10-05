@@ -1,0 +1,17 @@
+.fade-in-modal {
+    animation: fade-in .3s ease-out both;
+}
+
+.fade-out-modal{
+    animation: fade-in .3s ease-out both reverse;
+}
+
+@keyframes fade-in {
+    from{
+        opacity: 0;
+        transform: translateY(-20px);
+    }to{
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}

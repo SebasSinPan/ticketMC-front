@@ -1,0 +1,644 @@
+:root{
+    --bg-light-white: #FAFAFA;
+    --bg-light-gray: #EBEBEB;
+    --contour-color: #23333D;
+    --box-shadow-color: #23333D49;
+    --bg-contrast-color: #23333D;
+    
+    --main-color: #0095FF;
+    --main-color-highlight: #0095FFd0;
+    --main-contrast: #D000FF;
+    --main-contrast-highlight: #D000FFa1;
+    
+    --font-base-color: #23333D;
+    --font-contrast-dark: #FCFCFC;
+    --font-base-contrast: #7D3EE6;
+    --font-btn-white: #FCFCFC;
+
+    /*Dark theme*/
+    /* --bg-light-white: #1F2937;
+    --bg-light-gray: #111827;
+    --contour-color: #23333D;
+    --box-shadow-color: #EBEBEB30;
+    --bg-contrast-color: #EBEBEB;
+
+    --main-color: #0095FF;
+    --main-color-highlight: #0095FFd0;
+    --main-contrast: #D000FF;
+    --main-contrast-highlight: #D000FFa1;
+
+    --font-base-color: #FCFCFC;
+    --font-contrast-dark: #23333d;
+    --font-base-contrast: #7D3EE6;
+    --font-btn-white: #FCFCFC; */
+
+    --slider-width: 0px;
+}
+
+/* ------------------------------------------------------------------- */
+
+* {
+    box-sizing: border-box;
+    font-family: Inter, sans-serif;
+    color: var(--font-base-color);
+    scrollbar-width: thin;
+}
+
+body, main, header, section, div, aside, span, ul, li, a, nav, button, h1, h2, h3, h4, p{
+    padding: 0;
+    margin: 0;
+}
+
+/* ------------------------------------------------------------------- */
+
+body {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+}
+
+body main{
+    width: 100%;
+    scrollbar-width: thin;
+    scroll-snap-type: y proximity;
+}
+
+/* --------------------------------------------------------------- */
+/* Navegador */
+/* --------------------------------------------------------------- */
+
+/*Estilización del nav. Se deja sticky y se distribuyen los botones*/
+.nav{
+    width: 100%;
+    height: 12%;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    background-color: var(--bg-light-white);
+    box-shadow: 0 1px 15px var(--box-shadow-color);
+    z-index: 30;
+}
+
+.nav p{
+    font-weight: 600;
+    font-size: 30px;
+    color: var(--main-color);
+}
+
+.nav ul{
+    display: flex;
+}
+
+.nav ul li{
+    list-style-type: none;
+    display: inline-block;
+    padding: 10px;
+}
+
+.nav ul li a{
+    text-decoration: none;
+    color: var(--font-base-color);
+}
+
+.nav ul li a:hover{
+    color: var(--font-base-contrast);
+}
+
+.nav ul li a.iniciar-sesion{
+    padding: 10px;
+    background-color: var(--main-color);
+    border-radius: 5px;
+    color: var(--font-btn-white);
+    font-weight: 600;
+}
+
+.nav ul li a.iniciar-sesion:hover{
+    background-color: var(--main-color-highlight);
+}
+
+/* --------------------------------------------------------------- */
+/* Baner principal */
+/* --------------------------------------------------------------- */
+
+.banner{
+    width: 100%;
+    height: 78%;
+    display: flex;
+    align-items: center;
+    padding: 8%;
+    background-color: purple;
+    background: linear-gradient(90deg, #0095ff 21%, #7d3ee6 89%);
+}
+
+.banner__container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+
+.banner__container > div{
+    font-weight: 600;
+}
+
+.banner__container--title{
+    display: inline-block;
+    padding: 0 15px 15px;
+    font-size: 50px;
+}
+
+.banner__container--title{
+    text-wrap: pretty;
+}
+
+.banner__container--title span{
+    color: transparent;
+    text-shadow: 0 0 1px var(--font-contrast-dark);
+}
+
+.banner__container--title span:first-child{
+    text-shadow: none;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: var(--font-btn-white);
+}
+
+.banner__container--mensaje{
+    display: inline-block;
+    padding: 5px 15px;
+    text-align: center;
+}
+
+.banner__container--mensaje p{
+    font-size: 25px;
+    font-weight: 200;
+    color: var(--font-btn-white);
+}
+
+.banner__container--mensaje p span{
+    color: var(--font-contrast-dark);
+}
+
+/* --------------------------------------------------------------- */
+/* Características */
+/* --------------------------------------------------------------- */
+
+.caracteristicas{
+    width: 100%;
+    height: 2000px;
+    padding: 100px;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    background-color: var(--bg-light-white);
+}
+
+.caracteristicas__title{
+    width: 100%;
+    font-size: 35px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.caracteristicas__container{
+    position: sticky;
+    top: 25%;
+    view-timeline-name: --slider;
+	view-timeline-axis: block;
+}
+
+/*Se realiza un flex y se cambia el grow a none para obtener desbordamiento
+horizontal*/
+.caracteristicas__slider{
+    width: 2410px;
+    padding: 70px 0;
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+    gap: 50px;
+}
+
+.caracteristicas__card{
+    width: 360px;
+    height: 240px;
+    padding: 25px;
+    flex: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    background-color: var(--bg-light-gray);
+}
+
+.caracteristicas__card--icon img{
+    height: 70px;
+    width: 70px;
+    margin-bottom: 10px;
+}
+
+.caracteristicas__card--title p{
+    padding: 5px;
+    font-weight: 600;
+}
+
+.caracteristicas__card--description p{
+    font-size: 16px;
+    padding: 5px;
+}
+
+/* --------------------------------------------------------------- */
+/* Cómo funciona TicketMc */
+/* --------------------------------------------------------------- */
+
+.funcion{
+    width: 100%;
+    padding: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--bg-light-gray);
+}
+
+.funcion__title{
+    width: 100%;
+    font-size: 35px;
+    font-weight: 600;
+    text-align: center;
+}
+
+/*Centrar el contenedor del cómo funcionamos y generar un grid para ordenarlo*/
+.funcion__pasos{
+    width: 70%;
+    padding: 70px;
+    justify-content: center;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr; 
+    grid-template-columns: 1fr 1fr; 
+}
+
+/*Se centra la imagen en su contenedor y se aplica un filtro para que 
+pegue con los colores del software*/
+.funcion__img1,
+.funcion__img2,
+.funcion__img3{
+    display: flex;
+    justify-content: center;
+    filter: hue-rotate(150deg);
+}
+
+.funcion__img1 img,
+.funcion__img2 img,
+.funcion__img3 img{
+    width: 350px;
+}
+
+/*Ubicación y estilización del primer paso*/
+.funcion__paso1{
+    grid-row: 1/2;
+    grid-column: 1/2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.funcion__paso1--title{
+    font-weight: 600;
+    font-size: 20px;
+    display: inline-block;
+    padding: 15px;
+}
+
+.funcion__paso1--text p{
+    font-size: 18px;
+    text-align: center;
+}
+
+/*Ubicación y estilización del segundo paso*/
+.funcion__paso2{
+    grid-row: 2/3;
+    grid-column: 2/3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.funcion__paso2--title{
+    font-weight: 600;
+    font-size: 20px;
+    display: inline-block;
+    padding: 15px;
+}
+
+.funcion__paso2--text p{
+    font-size: 18px;
+    text-align: center;
+}
+
+/*Ubicación y estilización del tercer paso*/
+.funcion__paso3{
+    grid-row: 3/4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.funcion__paso3--title{
+    font-weight: 600;
+    font-size: 20px;
+    display: inline-block;
+    padding: 15px;
+}
+
+.funcion__paso3--text p{
+    font-size: 18px;
+    text-align: center;
+}
+
+/* --------------------------------------------------------------- */
+/* Testimonio de nuestros clientes */
+/* --------------------------------------------------------------- */
+
+.testimonio{
+    width: 100%;
+    padding: 100px;
+    background-color: var(--bg-light-white);
+}
+
+.testimonio__title{
+    width: 100%;
+    font-size: 35px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.testimonio__container{
+    width: 100%;
+    padding: 70px 0;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+.testimonio__card{
+    width: 360px;
+    padding: 25px;
+    background-color: var(--bg-light-gray);
+    border-radius: 15px;
+    box-shadow: 0 0 7px var(--box-shadow-color);
+}
+
+.testimonio__card--text{
+    text-wrap: pretty;
+}
+
+.testimonio__card--autor{
+    margin-top: 25px;
+    font-weight: 600;
+}
+
+.testimonio__card--autor-title p{
+    opacity: .7;
+    font-size: 14px;
+}
+
+/* --------------------------------------------------------------- */
+/* Preguntas frecuentes */
+/* --------------------------------------------------------------- */
+
+.faq{
+    width: 100%;
+    padding: 100px;
+    background-color: var(--bg-light-gray);
+}
+
+.faq__title{
+    width: 100%;
+    font-size: 35px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.faq__question__container{
+    padding: 70px 0;
+}
+
+.faq__question{
+    padding: 10px 0;
+    border-bottom: 1px solid var(--contour-color);
+}
+
+.faq__question:hover{
+    cursor: pointer;
+}
+
+.faq__question--title{
+    font-weight: 600;
+}
+
+.faq__question--response{
+    padding: 15px 30px 10px;
+    transition: padding 0.7s ease-out;
+}
+
+/* --------------------------------------------------------------- */
+/* Contacto */
+/* --------------------------------------------------------------- */
+
+.contact{
+    width: 100%;
+    padding: 100px 20px 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--bg-light-white);
+}
+
+.contact__title{
+    width: 60%;
+    font-size: 35px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 30px;
+    text-wrap: pretty;
+}
+
+.contact__title p{
+    text-wrap: pretty;
+}
+
+.contact__form{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.contact__form input{
+    width: clamp(450px, 95%, 600px);
+    height: 35px;
+    border: 1px solid var(--box-shadow-color);
+    padding-inline: 15px;
+    background-color: transparent;
+}
+
+.contact__form input:focus,
+.contact__form textarea:focus{
+    outline: 1px solid var(--main-color);
+}
+
+.contact__form textarea{
+    width: clamp(450px, 95%, 600px);
+    padding: 15px;
+    border: 1px solid var(--box-shadow-color);
+    background-color: transparent;
+    resize: vertical;
+    min-height: 5rem;
+    scrollbar-width: thin;
+}
+
+.contact__form button{
+    width: clamp(450px, 95%, 600px);
+    height: 40px;
+    border: none;
+    font-weight: 600;
+    color: var(--font-contrast-dark);
+    background-color: var(--main-contrast);
+}
+
+.contact__form button:hover{
+    cursor: pointer;
+    background-color: var(--main-contrast-highlight);
+}
+
+/* --------------------------------------------------------------- */
+/* Footer */
+/* --------------------------------------------------------------- */
+
+footer{
+    width: 100%;
+    padding: 50px;
+    background-color: var(--bg-contrast-color);
+}
+
+footer p{
+    width: 100%;
+    font-size: 16px;
+    font-weight: 200;
+    text-align: center;
+    color: var(--font-contrast-dark);
+}
+
+/* --------------------------------------------------------------- */
+/* Cover */
+/* --------------------------------------------------------------- */
+
+.cover{
+    position: fixed;
+    width: 100dvw;
+    height: 100dvh;
+    z-index: 20;
+    top: 0;
+    display: none;
+    /* background-color: white; */
+}
+
+/* --------------------------------------------------------------- */
+/* Elemento subir */
+/* --------------------------------------------------------------- */
+
+.up{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 5px solid var(--main-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 65px;
+    right: 25px;
+    z-index: 10;
+    transition: background-color .4s ease;
+}
+
+.up img{
+    width: 50px;
+    height: 50px;
+}
+
+.up:hover{
+    background-color: var(--bg-light-gray);
+    cursor: pointer;
+}
+
+/* --------------------------------------------------------------- */
+/* Media queries */
+/* --------------------------------------------------------------- */
+
+/*Centrar el elemento banner antes que se desborde*/
+@media (min-widht: 1800px) {
+    .banner__container{
+        justify-content: center;
+    }
+}
+
+/*Actualiza el cómo se muestran los pasos según el tamaño de la 
+pantalla*/
+@media (max-width: 750px) {
+    .funcion__pasos{
+        scale: .9;
+    }
+}
+
+@media (max-width: 650px) {
+    .funcion__pasos{
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(6, 1fr);
+    }
+
+    .funcion__paso1{
+        grid-row: 2/3;
+        grid-column: 1/2;
+    }
+
+    .funcion__img1{
+        grid-row: 1/2;
+        grid-column: 1/2;
+    }
+
+    .funcion__paso2{
+        grid-row: 4/5;
+        grid-column: 1/2;
+    }
+
+    .funcion__img2{
+        grid-row: 3/4;
+        grid-column: 1/2;
+    }
+
+    .funcion__paso3{
+        grid-row: 6/7;
+        grid-column: 1/2;
+    }
+
+    .funcion__img3{
+        grid-row: 5/6;
+        grid-column: 1/2;
+    }
+}
+
+@media (max-width: 500px) {
+    .funcion__pasos{
+        scale: .9;
+    }
+}

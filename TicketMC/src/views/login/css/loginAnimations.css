@@ -1,0 +1,104 @@
+/*hace que la cobertura se desplace destapando el registro y se quede ahí*/
+@keyframes Registrarse{
+    from{
+        left: 0;
+    }to{
+        left: 460px;
+    }
+}
+
+.usarRegistrarse{
+    animation: Registrarse 0.7s ease-out both;
+}
+
+.estadoFinalRegistro {
+    left: 460px; 
+    transition: left 0s;
+}
+
+/*hace que la cobertura se desplace destapando el registro y se quede ahí*/
+@keyframes IniciarSesion{
+    from{
+        right: 0;
+    }to{
+        right: 460px;
+    }
+}
+
+.usarIniciarSesion{
+    animation: IniciarSesion 0.7s ease-out both;
+}
+
+.estadoFinalInicio {
+    right: 460px; 
+    transition: right 0s;
+}
+
+/*Hace que el display se desvanezca de a poco*/
+@keyframes Desvanecer{
+    from{
+        opacity: 1;
+    }to{
+        opacity: 0;
+    }
+}
+
+.usarDesvanecer{
+    animation: Desvanecer 0.7s ease-in both;
+}
+
+/*Hace que el display se desvanezca de a poco*/
+@keyframes Aparecer{
+    from{
+        opacity: 0;
+    }to{
+        opacity: 1;
+    }
+}
+
+.usarAparecer{
+    animation: Aparecer 0.3s ease-in both;
+}
+
+/* Motas de polvo del fondo */
+@keyframes flotar {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(-20px); 
+        opacity: 0.5; 
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.mota {
+    position: absolute;
+    border-radius: 50%;
+    background: #b9b9b9af; 
+    pointer-events: none; 
+    animation: flotar 6s infinite ease-in-out; 
+    z-index: 10;
+}
+
+/*Animación mensajes de error*/
+@keyframes warning {
+    0%{
+        opacity: .6;
+        color: var(--btn-white-contrast);
+    }30%{
+        opacity: 1;
+        color: #ff000077;
+    }90%{
+        opacity: 1;
+        color: #ff000077;
+    }100%{
+        opacity: .6;
+        color: var(--btn-white-contrast);
+    }
+}
+

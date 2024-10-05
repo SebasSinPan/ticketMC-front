@@ -1,0 +1,406 @@
+:root{
+    --bg-light-white: #FAFAFA;
+    --bg-light-gray: #EBEBEB;
+    --contour-color: #23333D;
+    --box-shadow-color: #23333D49;
+    --bg-contrast-color: #23333D;
+    --bg-cover-color: #577991;
+    --btn-white-contrast: #dadadaa3;
+
+    --main-color: #0095FF;
+    --main-color-highlight: #0095FFd0;
+    --main-contrast: #D000FF;
+    --main-contrast-highlight: #D000FFa1;
+    --main-color-nav: #0095FF;
+    --main-color-nav-contrast: #31a8fe;
+
+    --font-base-color: #23333D;
+    --font-contrast-dark: #FCFCFC;
+    --font-base-contrast: #7D3EE6;
+    --font-btn-white: #FCFCFC;
+
+    
+}
+
+/* ------------------------------------------------------------------- */
+
+* {
+    box-sizing: border-box;
+    font-family: Inter, sans-serif;
+    color: var(--font-base-color);
+}
+
+body, main, header, section, div, aside, span, ul, li, a, nav, button, h1, h2, h3, h4, p{
+    padding: 0;
+    margin: 0;
+}
+
+/* ------------------------------------------------------------------- */
+
+body{
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+body .general__background{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 0;
+}
+
+.general__background--dark-them{
+    filter: invert(1);
+}
+
+/* --------------------------------------------------------------- */
+/* Contenedor login */
+/* --------------------------------------------------------------- */
+
+main{
+    width: 920px;
+    height: 450px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    background-color: var(--bg-light-white);
+    box-shadow: 0px 0px 12px var(--box-shadow-color);
+    z-index: 20;
+    border-radius: 5px;
+}
+
+/* --------------------------------------------------------------- */
+/* Registro */
+/* --------------------------------------------------------------- */
+
+.singup{
+    width: 460px;
+    height: 100%;
+    padding: 30px 40px 40px;
+    display: flex;
+    grid-column: 1/2;
+    flex-direction: column;
+    align-items: center;
+}
+
+.singup h2{
+    margin: 10px;
+    font-size: 30px;
+}
+
+.singup p{
+    font-size: 16px;
+}
+
+.singup p a{
+    text-decoration: none;
+    color: var(--main-color);
+}
+
+.singup p a:hover{
+    color: var(--main-color-highlight);
+}
+
+.singup p span{
+    font-weight: 600;
+}
+
+.singup form{
+    margin: 35px 0 0;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.singup form .singup__input{
+    position: relative;
+}
+
+.singup form input{
+    width: 380px;
+    height: 35px;
+    border: 1px solid var(--contour-color);
+    padding-inline: 15px;
+    background-color: transparent;
+}
+
+.singup form label{
+    position: absolute;
+    left: 15px;
+    top: 9.5px;
+    font-size: 13.7px;
+    color: transparent;
+    background-color: transparent;
+    pointer-events: none;
+    transition: top 0.2s ease-out, font-size 0.5s ease-out, color 0.5s ease-out;
+}
+
+.singup form input:focus::placeholder{
+    color: transparent;
+}
+
+.singup form input[type="text"]:focus + label,
+.singup form input[type="email"]:focus + label,
+.singup form input[type="password"]:focus + label{
+    display: inline-block;
+    padding-inline: 5px;
+    top: -7px;
+    font-size: 12px;
+    color: var(--main-color);
+    background-color: var(--bg-light-white);
+}
+
+.singup__input{
+    padding: 3px 0;
+}
+
+.singup__input input[type="text"] ~ p,
+.singup__input input[type="email"] ~ p,
+.singup__input input[type="password"] ~ p{
+    position: absolute;
+    top: -12px;
+    font-size: 12px;
+    right: 0;
+    animation: warning 2s ease-out infinite;
+    display: none;
+}
+
+.singup__condiciones{
+    width: 100%;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.singup form input[type="checkbox"]{
+    width: 15px;
+}
+
+.singup form input[type="checkbox"]+p{
+    color: var(--font-base-color);
+    font-size: 13px;
+}
+
+.singup__form button{
+    margin-top: 10px;
+    width: 380px;
+    height: 40px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--font-btn-white);
+    background-color: var(--main-color);
+    border: none;
+    border-radius: 8px;
+}
+
+.singup__form button:hover{
+    cursor: pointer;
+    background-color: var(--main-color-highlight);
+    
+}
+
+/* --------------------------------------------------------------- */
+/* Términos y condiciones */
+/* --------------------------------------------------------------- */
+
+dialog {
+    width: 450px;
+    height: 450px;
+    padding: 40px;
+    position: absolute;
+    background-color: var(--bg-light-white);
+    /* background-color: var(--bg-cover-color); */
+    border: 1px solid var(--contour-color);
+    z-index: 30;
+    overflow: auto;
+    scrollbar-width: thin;
+}
+
+dialog h2 + p{
+    margin-bottom: 30px;
+    padding: 10px 0;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+dialog h2 + p span{
+    font-weight: 200;
+}
+
+dialog .condiciones{
+    width: 100%;
+    margin-top: 10px;
+    overflow-y: auto;
+}
+
+dialog .condiciones h3{
+    padding: 15px 5px;
+}
+
+dialog .condiciones p{
+    padding: 5px;
+    font-size: 14px;
+}
+
+dialog .condiciones ul{
+    padding: 5px 0;
+}
+
+dialog .condiciones li span{
+    font-weight: 600;
+}
+
+dialog .condiciones li{
+    padding-inline: 5px;
+    font-size: 14px;
+}
+
+/* --------------------------------------------------------------- */
+/* Inicio de sesión */
+/* --------------------------------------------------------------- */
+
+.login{
+    grid-column: 2/3;
+    width: 460px;
+    height: 100%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login h2{
+    margin: 10px;
+    font-size: 30px;
+}
+
+.login h2+p{
+    font-size: 16px;
+}
+
+.login h2+p a{
+    text-decoration: none;
+    color: var(--main-color);
+}
+
+.login h2+p a:hover{
+    color: var(--main-color-highlight);
+}
+
+.login h2+p span{
+    font-weight: 600;
+}
+
+.login form{
+    margin: 35px 0 30px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+}
+
+.login form .login__input{
+    position: relative;
+}
+
+.login form input{
+    width: 380px;
+    height: 35px;
+    padding-inline: 15px;
+    font-size: 16px;
+    border: 1px solid var(--contour-color);
+    background-color: transparent;
+}
+
+.login form label{
+    position: absolute;
+    left: 15px;
+    top: 9.5px;
+    font-size: 13.7px;
+    color: transparent;
+    background-color: transparent;
+    pointer-events: none;
+    transition: top 0.2s ease-out, font-size 0.5s ease-out, color 0.5s ease-out;
+}
+
+.login form input:focus::placeholder{
+    color: transparent;
+}
+
+.login form input:focus + label{
+    display: inline-block;
+    padding-inline: 5px;
+    top: -7px;
+    font-size: 12px;
+    color: var(--main-color);
+    background-color: var(--bg-light-white);
+}
+
+.login__form #login__form--message{
+    position: absolute;
+    bottom: 47px;
+    font-size: 14px;
+    animation: warning 2s ease-out infinite;
+    display: none;
+}
+
+.login form button{
+    width: 380px;
+    height: 40px;
+    margin-top: 15px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    color: var(--font-btn-white);
+    background-color: var(--main-color);
+    border: none;
+}
+
+.login form button:hover{
+    cursor: pointer;
+    background-color: var(--main-color-highlight);
+}
+
+.login .login__options{
+    display: flex;
+    margin-top: 24px;
+    gap: 22px;
+}
+
+.login .login__options button{
+    width: 112px;
+    height: 40px;
+    border-radius: 8px;
+    border: 1px solid var(--contour-color);
+    background-color: transparent;
+}
+
+.login .login__options button:hover{
+    cursor: pointer;
+    outline: 1px solid var(--main-color-highlight);
+}
+
+.login .login__options button img{
+    width: 25px;
+    height: 25px;
+    color: var(--main-color);
+}
+
+/* --------------------------------------------------------------- */
+/* Cover */
+/* --------------------------------------------------------------- */
+
+.cover{
+    width: 460px;
+    height: 100%;
+    position: absolute;
+    z-index: 100;
+    background-color: var(--bg-cover-color);
+} 
