@@ -25,7 +25,7 @@ const confirmarCorreo = (correo)=>{
     let isValid = true;
 
     //patrón que debe seguir el input
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!emailPattern.test(correo)){
         isValid = false;
@@ -58,9 +58,9 @@ const confirmarContrasenna = (pass1, pass2) => {
 //sean correctas
 const validarDatosRegistro = (nombre, correo, pass1, pass2)=>{
     let isValid = true;
-    validation1 = confirmarNombre(nombre);
-    validation2 = confirmarCorreo(correo);
-    validation3 = confirmarContrasenna(pass1, pass2)
+    let validation1 = confirmarNombre(nombre);
+    let validation2 = confirmarCorreo(correo);
+    let validation3 = confirmarContrasenna(pass1, pass2)
 
     //validación que todos los campos evaluados sean correctos
     if (validation1 == false || validation2 == false || validation3 == false ) {

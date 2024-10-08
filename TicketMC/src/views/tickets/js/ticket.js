@@ -21,10 +21,17 @@ ticketContainer.addEventListener('click', ev => {
         MODAL.querySelector('.details--description').textContent = description;
 
         aplicarEstilosModal();  
+        MODAL.classList.add('fade-in-modal');
         MODAL.showModal();
+
+        // evento que limpia la clase de animación una vez que la animación termine
+        MODAL.addEventListener('animationend', () => {
+            MODAL.classList.remove('fade-in-modal');
+        });
 });
 
 //Permite cerrar el modal al clickear fuera de este
+//además, añade y elimina la animación de salida
 MODAL.addEventListener('click', e => {
     const dialogDimensions = MODAL.getBoundingClientRect();
     if (
@@ -33,7 +40,14 @@ MODAL.addEventListener('click', e => {
         e.clientY < dialogDimensions.top ||
         e.clientY > dialogDimensions.bottom
     ) {
-        MODAL.close();
+        //agrega una animación a la salida del modal
+        MODAL.classList.add('fade-out-modal');
+        
+        //tras ocurrir la animación, la animación se remueve
+        MODAL.addEventListener('animationend', () => {
+            MODAL.close();
+            MODAL.classList.remove('fade-out-modal');
+        }, {once: true});
     }
 });
 
@@ -41,8 +55,8 @@ MODAL.addEventListener('click', e => {
 //                          Datos de los tickets
 // ------------------------------------------------------------------------
 
-//Obtiene los datos de los tickets y, con ellos, crea elemento por elemento,
-//el ticket, para añadirlo al HTML
+//Obtiene los datos de los tickets de un json y, con ellos, llama al js de
+//componentes para crear, elemento por elemento, el ticket
 async function cargarDatos() {
     try {
         const response = await fetch('datos.json');
@@ -58,59 +72,9 @@ async function cargarDatos() {
             let dataTticketDate = datos[i].ticketDate;
 
             const ticketContainer = document.querySelector('.container__ticket--ticket');
-            
-            // Crea el contenedor principal
-            const ticketDiv = document.createElement('div');
-            ticketDiv.className = 'ticket select-ticket';
 
-            // Div título
-            const titleDiv = document.createElement('div');
-            titleDiv.className = 'ticket--title';
-
-            // Creación h3
-            const titleElement = document.createElement('h3');
-            titleElement.className = 'title--name';
-            titleElement.textContent = `${dataTticketTitle}`;
-
-            // Creación prioridad
-            const priorityElement = document.createElement('span');
-            priorityElement.className = 'title--prio ticket-prio';
-            priorityElement.textContent = `${dataTticketPrio}`;
-
-            // Inyección a Div título
-            titleDiv.appendChild(titleElement);
-            titleDiv.appendChild(priorityElement);
-
-            // Div descripción
-            const descriptionDiv = document.createElement('div');
-            descriptionDiv.className = 'ticket--description';
-
-            // Párrafo descripción
-            const descriptionElement = document.createElement('p');
-            descriptionElement.textContent = `${dataTticketDescription}`;
-
-            // Inyección a Div descipción
-            descriptionDiv.appendChild(descriptionElement);
-
-            // Div estado
-            const stateDiv = document.createElement('div');
-            stateDiv.className = 'ticket--state';
-
-            // Creación Estado
-            const stateElement = document.createElement('span');
-            stateElement.className = 'ticket-state';
-            stateElement.textContent = `${dataTticketState}`;
-
-            // Inyección Estado
-            stateDiv.appendChild(stateElement);
-
-            // Inyección al Div del ticket
-            ticketDiv.appendChild(titleDiv);
-            ticketDiv.appendChild(descriptionDiv);
-            ticketDiv.appendChild(stateDiv);
-
-            // Inyectar Ticket al contenedor
-            ticketContainer.appendChild(ticketDiv);
+            // // Inyectar Ticket al contenedor
+            ticketContainer.appendChild(createTicket(dataTticketTitle, dataTticketDescription, dataTticketPrio, dataTticketState));
 
             aplicarEstilosTicket();
 

@@ -17,6 +17,14 @@
     animation: ShowModal800px .8s both ease;
 }
 
+.showGenericModal{
+    animation: showGenericModal .2s both ease-in;
+}
+
+.hideGenericModal{
+    animation: hideGenericModal .2s both ease-out;
+}
+
 @keyframes ShowUser {
     from{
         opacity: 0;
@@ -94,5 +102,41 @@
     }to{
         opacity: 1;
         top: 12%;
+    }
+}
+
+@keyframes showGenericModal {
+    from{
+        transform: scale(.85);
+        opacity: 0;
+    }to{
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes hideGenericModal {
+    from{
+        transform: scale(1);
+        opacity: 1;
+    }to{
+        transform: scale(.85);
+        opacity: 0;
+    }
+}
+
+@keyframes warning {
+    0%{
+        opacity: .6;
+        color: var(--btn-white-contrast);
+    }30%{
+        opacity: 1;
+        color: #ff000077;
+    }90%{
+        opacity: 1;
+        color: #ff000077;
+    }100%{
+        opacity: .6;
+        color: var(--btn-white-contrast);
     }
 }

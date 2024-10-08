@@ -45,7 +45,50 @@
                         <h3>Modificación de la cuenta</h3>
                     </div>
                     <p>Actualiza tu información personal y de contacto.</p>
-                    <button id="user-data">Editar perfil</button>
+                    <div class="options--data-btn">
+                        <button id="user-data">Editar perfil</button>
+                        <button id="user-pass">Cambiar contraseña</button>
+                        <dialog id="options--data-modal" class="options--data-modal">
+                            <div class="data-modal-title">
+                                <h3>Cambiar contraseña</h3>
+                                <p id="data-modal-close">x</p>
+                            </div>
+                            <form action="" id="data-modal-pass" class="data-modal-pass">
+                                <div class="data-modal-input">
+                                    <input type="password"
+                                            name="" id="user--pass-old" class=""
+                                            placeholder="Contraseña"
+                                            required
+                                    >
+                                    <label for="">Contraseña</label>
+                                </div>
+                                <div class="data-modal-input ">
+                                    <input type="password"
+                                            name="" id="user--pass-new" class=""
+                                            placeholder="Nueva contraseña"
+                                            required
+                                    >
+                                    <label for="">Nueva contraseña</label>
+                                </div>
+                                <div class="data-modal-input">
+                                    <input type="password"
+                                            name="" id="user--pass-new2" class=""
+                                            placeholder="Confirmar nueva contraseña"
+                                            required
+                                    >
+                                    <label for="">Confirmar nueva contraseña</label>
+                                </div>
+                                <button id="saveNewPassBtn" type="submit">Guardar cambios</button>
+                                <dialog id="confirmChangePass" class="confirmChangePass">
+                                    <h3>¿Está seguro que desea cambiar la contraseña?</h3>
+                                    <div>
+                                        <button id="confirmChangePass-cancel">Cancelar</button>
+                                        <button id="confirmChangePass-confirm">Confirmar</button>
+                                    </div>
+                                </dialog>
+                            </form>
+                        </dialog>
+                    </div>
                     <dialog id="modalUser" class="modal modalUser">
                         <div class="modal__titulo">
                             <div class="modal__titlo--img">
@@ -56,40 +99,49 @@
                             </div>
                         </div>
                         <div class="modal__contenido">
-                            <div class="modal__contenido--foto-perfil">
-                                <img src="img/User_icon_user.png" alt="imagen de perfil">
-                                <p>Cambiar imagen de perfil</p>
-                            </div>
                             <div class="modal__contenido--datos-usuario">
-                                <div class="modal__contenido--datos-titulo">
-                                    <h4>Datos personales</h4>
-                                </div>
-                                <form action="">
-                                    <div class="modal__contenido--input">
-                                        <input type="text"
-                                                id="nombre" class="nombre"
-                                                placeholder="Nombre"
-                                                required
+                                <form action="" id="modal__contenido--datos-usuario-form" class="modal__contenido--datos-usuario-form">
+                                    <div class="modal__contenido--foto-perfil">
+                                        <img src="img/User_icon_user.png" alt="imagen de perfil">
+                                        <input type="file" 
+                                        name="userPhoto" id="userPhoto"
+                                        accept="image/*"
                                         >
-                                        <label for="">Nombre</label>
+                                        <label for="userPhoto">Cambiar foto de perfil</label>
                                     </div>
-                                    <div class="modal__contenido--input">
-                                        <input type="email"
-                                                id="correo" class="correo"
-                                                placeholder="Correo"
-                                                required
-                                        >
-                                        <label for="" id="label-input-correo">Correo</label>
+                                    <div class="modal__contenido--formData">
+                                        <div class="modal__contenido--datos-titulo">
+                                            <h4>Datos personales</h4>
+                                        </div>
+                                        <div class="modal__contenido--input">
+                                            <input type="text"
+                                                    id="updateUserData__nombre" class="nombre"
+                                                    placeholder="Nombre"
+                                                    required
+                                            >
+                                            <label for="">Nombre</label>
+                                            <label id="contenido--input_errorName">Nombre no válido</label>
+                                        </div>
+                                        <div class="modal__contenido--input">
+                                            <input type="email"
+                                                    id="updateUserData__correo" class="correo"
+                                                    placeholder="Correo"
+                                                    required
+                                            >
+                                            <label for="" id="label-input-correo">Correo</label>
+                                            <label id="contenido--input_errorEmail">Correo no válido</label>
+                                        </div>
+                                        <div class="modal__contenido--input">
+                                            <input type="number"
+                                                    id="updateUserData__tel" class="teltefono"
+                                                    placeholder="Teléfono"
+                                                    required min="0"
+                                            >
+                                            <label for="">Teléfono</label>
+                                            <label id="contenido--input_errorNum">Número no válido</label>
+                                        </div>
+                                        <button type="submit">Guardar</button>
                                     </div>
-                                    <div class="modal__contenido--input">
-                                        <input type="number"
-                                                id="teltefono" class="teltefono"
-                                                placeholder="Teléfono"
-                                                required
-                                        >
-                                        <label for="">Teléfono</label>
-                                    </div>
-                                    <button>Guardar</button>
                                 </form>
                             </div>
                         </div>
@@ -136,24 +188,24 @@
                             <div class="modal__contenidoHelp--informacion">
                                 <p>Si tiene algún problema con la plataforma o duda sobre el servicio, comuníquese con nuestro equipo técnico</p>
                             </div>
-                            <form action="">
+                            <form id="modalHelp__contenido--form">
                                 <div class="modalHelp__contenido--asunto">
                                     <label for="">Asunto</label>
                                     <input type="text"
-                                        name="asunto" id="asunto" 
+                                        name="asunto" id="modalHelpInput--asunto" 
                                         class="contenido--asunto-input"
                                         required
                                     >
                                 </div>
                                 <div class="modal__contenido--descripcion">
                                     <label for="">Mensaje</label>
-                                    <textarea name="mensaje" id="mensaje" 
+                                    <textarea name="mensaje" id="modalHelpInput--mensaje" 
                                             class="contenido--descripcion-input"
                                             required
                                     >
                                     </textarea>
                                 </div>
-                                <button>Enviar</button>
+                                <button type="submit">Enviar</button>
                             </form>
                         </div>
                     </dialog>
@@ -177,10 +229,14 @@
             </section>
             <div id="curtain" class="curtain"></div>
         </main>
-        <div class="decoration">
-        </div>
+        <div id="bg-decoration"></div>
     </section>
     <script src="js/user.js"></script>
+    <script src="js/userPassModal.js"></script>
     <script src="js/userDarkTheme.js"></script>
+    
+    <script src="../../services/userModificarDatos.js"></script>
+    <script src="../../services/userChangePass.js"></script>
+    <script src="../../services/userSupportRequiest.js"></script>
 </body>
 </html>

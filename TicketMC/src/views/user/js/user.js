@@ -1,3 +1,20 @@
+//-----------------------------------------------------------
+// Estilo fondo
+//-----------------------------------------------------------
+
+//Determina la imagen de fondo según el rol del usuario
+const bgDecoration = document.getElementById('bg-decoration');
+
+if (localStorage.getItem('rol') == 'user') {
+    bgDecoration.classList.add('decoration_user')
+}else
+if (localStorage.getItem('rol') == 'tech'){
+    bgDecoration.classList.add('decoration_tech')
+}
+
+//-----------------------------------------------------------
+// Comandos para modales
+//-----------------------------------------------------------
 //botones que abren o cierran modales
 const userData = document.getElementById('user-data');
 const statsData = document.getElementById('stats-data');
@@ -122,5 +139,3 @@ cerrarModal(modalHelp);
 closeCloseModal.addEventListener('click', ()=>{
     modalClose.close();
 })
-
-fetch

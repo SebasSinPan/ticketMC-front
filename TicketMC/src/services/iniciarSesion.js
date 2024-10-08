@@ -20,7 +20,7 @@ const validateLoginCorreo = (correo)=>{
 
 //función que prepara los datos para enviarlos al back
 //en caso que los datos no sean correctos o no válidos, maneja el error
-//además, almacena la respuesta en el localhost, pues es la autenticación
+//además, almacena la respuesta en el localstorage, pues es la autenticación
 async function enviarDatosLogin(data) {
     try {
         const response = await fetch(`${URL}/auth/token`, {

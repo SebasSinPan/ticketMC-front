@@ -4,6 +4,7 @@
     --contour-color: #23333D;
     --box-shadow-color: #23333D49;
     --bg-contrast-color: #23333D;
+    --box-shadow-color_2: #23333D;
     --btn-white-contrast: #dadadaa3;
 
     --main-color: #0095FF;
@@ -145,12 +146,12 @@ body{
     border-radius: 10px;
     background-color: var(--bg-light-white);
     box-shadow: 0 0px 10px var(--box-shadow-color);
-    transition: scale .5s;
     z-index: 20;
+    transition: transform .3s ease-out;
 }
 
 .user__options:not(:first-child):hover{ 
-    scale: 1.07;
+    transform: scale(1.03);
 }
 
 .user__options h3{
@@ -252,6 +253,25 @@ body{
     padding: 10px;
 }
 
+/*Etilización sección de modificar datos usuario*/
+
+.user__container--data .options--data-btn{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 10px;
+    gap: 10px;
+}
+
+.user__container--data .options--data-btn #user-pass{
+    color: var(--main-color);
+    background-color: var(--font-btn-white);
+    border: 1px solid var(--contour-color);
+}
+
+.user__container--data .options--data-btn #user-pass:hover{
+    filter: contrast(.85);
+}
+
 /* --------------------------------------------------------------- */
 /* Modal */
 /* --------------------------------------------------------------- */
@@ -281,7 +301,7 @@ body{
     z-index: 30;
     overflow: hidden;
     border: none;
-    box-shadow: 0 0 15px var(--box-shadow-color);
+    box-shadow: 0 0 10px var(--box-shadow-color);
 }
 
 .modal__titulo{
@@ -319,16 +339,47 @@ body{
 }
 
 .modalUser .modal__contenido{
-    display: grid;
+    display: flex;
+    flex-wrap: wrap;
     align-content: center;
     justify-content: center;
 }
 
+.modalUser .modal__contenido--datos-usuario{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.modalUser .modal__contenido--datos-usuario form{
+    display: grid;
+    grid-template-columns: 1fr 1.75fr;
+    gap: 15px;
+}
+
 .modalUser .modal__contenido--foto-perfil{
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 10px;
+}
+
+.modalUser .modal__contenido--foto-perfil input[type="file"]{
+    display: none;
+}
+
+.modalUser .modal__contenido--foto-perfil label{
+    padding: 15px 10px;
+    display: hidden;
+    font-size: 14px;
+}
+
+.modalUser .modal__contenido--foto-perfil label:hover{
+    cursor: pointer;
 }
 
 .modalUser .modal__contenido--foto-perfil img{
@@ -336,29 +387,24 @@ body{
     width: 150px;
 }
 
-.modalUser .modal__contenido--datos-usuario{
-    width: 100%;
-}
-
-.modalUser .modal__contenido--datos-titulo{
-    padding: 0 20px;
-    font-size: 20px;
-}
-
-.modalUser .modal__contenido--datos-usuario form{
+.modalUser .modal__contenido--formData{
     display: flex;
     flex-direction: column;
-    padding: 20px;
-    gap: 5px;
+    gap: 16px;
+    padding: 10px;
 }
 
-.modalUser .modal__contenido--datos-usuario form > div{
-    width: 100%;
+.modalUser .modal__contenido--formData .modal__contenido--datos-titulo{
+    padding: 0 20px;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.modalUser .modal__contenido--formData .modal__contenido--input{
     position: relative;
-    padding: 5px 0;
 }
 
-.modalUser .modal__contenido--datos-usuario form input{
+.modalUser .modal__contenido--formData .modal__contenido--input input{
     width: 100%;
     height: 35px;
     padding: 5px 10px;
@@ -368,7 +414,7 @@ body{
     outline: 1px solid var(--contour-color);
 }
 
-.modalUser .modal__contenido--datos-usuario form label{
+.modalUser .modal__contenido--formData .modal__contenido--input label{
     position: absolute;
     left: 8px;
     padding-inline: 4px;
@@ -379,19 +425,27 @@ body{
     color: transparent;
 }
 
-.modalUser .modal__contenido--datos-usuario form input:focus + label{
+.modalUser .modal__contenido--formData .modal__contenido--input input:focus + label{
     padding: 5px;
-    top: -8px;
+    top: -12px;
     font-size: 12px;
     color: var(--main-color);
     background-color: var(--bg-light-white);
 }
 
-.modalUser .modal__contenido--datos-usuario form input:focus::placeholder{
+.modalUser .modal__contenido--formData .modal__contenido--input input:focus::placeholder{
     color: transparent;
 }
 
-.modalUser .modal__contenido--datos-usuario form button{
+.modalUser .modal__contenido--formData .modal__contenido--input label:last-child{
+    display: none;
+    font-size: 12px;
+    top: -15px;
+    left: calc(100% - 110px);
+    animation: warning 2s ease-out infinite;
+}
+
+.modalUser .modal__contenido--formData button{
     margin-top: 10px;
     height: 35px;
 }
@@ -467,7 +521,7 @@ body{
     width: 400px;
     padding: 15px;
     border: 1px solid var(--contour-color);
-    box-shadow: 0 0 15px var(--box-shadow-color);
+    box-shadow: 0 0 10px var(--box-shadow-color);
     background-color: var(--bg-light-white);
 }
 
@@ -502,35 +556,154 @@ body{
     background-color: var(--bg-light-gray);
 }
 
+/*Modal cambiar contraseña*/
+
+.options--data-btn .options--data-modal{
+    width: 400px;
+    padding: 20px;
+    background-color: var(--bg-light-white);
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 10px var(--box-shadow-color_2);
+}
+
+.options--data-modal .data-modal-title{
+    display: flex;
+    justify-content: space-between;
+}
+
+.options--data-modal .data-modal-title h3{
+    font-weight: 600;
+    font-size: 18px;
+    padding: 10px 0;
+}
+
+.options--data-modal .data-modal-title p{
+    font-size: 18px;
+    padding-right: 5px;
+    transition: transform .2s ease-in;
+}
+
+.options--data-modal .data-modal-title p:hover{
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.options--data-modal .data-modal-pass .data-modal-input{
+    display: flex;
+    flex-direction: column;
+    padding: 5px 0;
+    margin: 7px 0;
+    position: relative;
+}
+
+.data-modal-pass .data-modal-input label{
+    font-size: 15px;
+    padding: 0 5px;
+    position: absolute;
+    top: 12px;
+    left: 6px;
+    color: transparent;
+    pointer-events: none;
+    transition: color .3s ease-in, transform .3s ease-out, top .3s ease;
+}
+
+.data-modal-pass .data-modal-input input{
+    height: 30px;
+    padding: 5px 10px;
+    background-color: transparent;
+    border: none;
+    outline: 1px solid var(--contour-color);
+    border-radius: 2px;
+}
+
+.data-modal-pass .data-modal-input input:focus::placeholder{
+    color: transparent;
+}
+
+.data-modal-pass .data-modal-input input:focus ~ label{
+    color: var(--main-color);
+    background-color: var(--bg-light-white);
+    font-size: 12px;
+    top: -2px;
+}
+
+.data-modal-pass button{
+    width: 100%;
+    margin-top: 10px;
+    height: 35px;
+}
+
+/*Modal para confirmar el cambio de contraseña*/
+
+.options--data-modal .confirmChangePass{
+    width: 400px;
+    padding: 20px;
+    background-color: var(--bg-light-gray);
+}
+
+.options--data-modal .confirmChangePass h3{
+    font-size: 16px;
+    padding: 10px 0;
+}
+
+.options--data-modal .confirmChangePass div{
+    display: flex;
+    gap: 10px;
+}
+
+.options--data-modal .confirmChangePass button{
+    font-weight: 600;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    outline: 1px solid var(--contour-color);
+    background-color: var(--main-color);
+    color: var(--font-btn-white);
+}
+
+.options--data-modal .confirmChangePass button:hover{
+    filter: contrast(1.5);
+}
+
+.options--data-modal .confirmChangePass button:last-child{
+    background-color: var(--font-btn-white);
+    color: var(--main-color);
+}
+
+.options--data-modal .confirmChangePass button:last-child:hover{
+    filter: contrast(1.5);
+}
+
 /* --------------------------------------------------------------- */
 /* Estampa del fondo */
 /* --------------------------------------------------------------- */
 
-.decoration{
+.decoration_tech{
     position: absolute;
     top: 0;
     left: 50dvw;
     width: 100%;
     height: 100%;
-    background-image: url('img/bg-decoration-tech.png');
+    background-image: url('../img/User_bg-decoration-tech.png');
     background-size: cover; 
     background-repeat: no-repeat;
     z-index: 10;
     mix-blend-mode: overlay;
 }
-/* 
-.decoration{
+
+.decoration_user{
     position: absolute;
     top: 10vh;
     left: 30dvw;
     width: 100%;
     height: 100%;
-    background-image: url('img/bg-decoration-user.png');
+    background-image: url('../img/User_bg-decoration-user.png');
     background-size: cover; 
     background-repeat: no-repeat;
     z-index: 10;
     mix-blend-mode: overlay;
-} */
+}
 
 /* --------------------------------------------------------------- */
 /* Media queries */
@@ -610,7 +783,6 @@ body{
         left: 20dvw;
         width: 150%;
         height: 100%;
-        background-image: url('img/bg-decoration-tech.png');
     }
 
     .decoration{
@@ -618,7 +790,6 @@ body{
         left: 50dvw;
         width: 80%;
         height: 70%;
-        background-image: url('img/bg-decoration-user.png');
         rotate: 15deg;
     }
 
@@ -730,6 +901,21 @@ body{
         width: 20px;
     }
 
+    /*Modal cambiar datos usuario*/
+
+    .modalUser .modal__contenido--foto-perfil{
+        margin-top: 35px;
+    }
+
+    .modalUser{
+        width: 380px;
+        height: 550px;
+    }
+
+    .modal__contenido--datos-usuario .modal__contenido--datos-usuario-form{
+        grid-template-columns: 1fr !important;
+    }
+
     /*Decoración del fondo*/
     
     .decoration{
@@ -737,7 +923,6 @@ body{
         left: 20dvw;
         width: 150%;
         height: 100%;
-        background-image: url('img/bg-decoration-tech.png');
     }
 
     .decoration{
@@ -745,13 +930,11 @@ body{
         left: 50dvw;
         width: 80%;
         height: 70%;
-        background-image: url('img/bg-decoration-user.png');
         rotate: 15deg;
     }
 
     /*modal*/
 
-    .modalUser,
     .modalStats,
     .modalHelp{
         width: 380px;
