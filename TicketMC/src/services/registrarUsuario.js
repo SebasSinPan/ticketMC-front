@@ -1,4 +1,8 @@
 const registerForm = document.getElementById('singup__form');
+const registerAlertError = document.getElementById('registerAlertError');
+const registerAlertErrorText = document.getElementById('registerAlertError__message');
+const registerAlertSuccess = document.getElementById('registerAlertSuccess');
+const registerAlertSuccessText = document.getElementById('registerAlertSuccess__text');
 
 //función que valida que la cadena del input name siga un patrón correcto
 //De caso contrario, muestra un mensaje de error
@@ -90,11 +94,25 @@ async function enviarRegistro(data) {
 
         // Procesamos la respuesta como JSON
         const respuesta = await response.json();
+
         console.log('Respuesta de la API:', respuesta);
+        //alerta de la solicitud
+        registerAlertSuccessText.innerHTML = 'El registro fue exitoso';
+        registerAlertSuccess.showModal();
+        setTimeout(()=>{
+            registerAlertSuccess.close();
+        },2000)
+
 
     } catch (error) {
-        alert(`${error}. Problemas al realizar el registro, revise que su correo no haya sido utilizado aún`)
         console.error('Error al enviar datos:', error);
+        //alerta de la solicitud
+        registerAlertErrorText.innerHTML = 'Hubo un error en el registro';
+        registerAlertError.showModal();
+        setTimeout(()=>{
+            registerAlertError.close();
+        },2000)
+
     }
 }
 
@@ -115,8 +133,9 @@ registerForm.addEventListener('submit', async ev =>{
             email : correoRegistro,
             password : contrasennaRegistro
         }
-
-        enviarRegistro(registerData);
+        
+        await enviarRegistro(registerData);
+        
         registerForm.reset();
     }
 

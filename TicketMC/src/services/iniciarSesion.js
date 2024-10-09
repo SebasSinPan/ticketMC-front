@@ -1,4 +1,8 @@
 const loginFormForToken = document.getElementById('login__form');
+const loginAlertError = document.getElementById('registerAlertError');
+const loginAlertErrorText = document.getElementById('registerAlertError__message');
+const loginAlertValidated = document.getElementById('registerAlertValidated');
+const loginAlertValidatedText = document.getElementById('registerAlertValidated__text');
 
 //función que valida que la cadena del input email siga un patrón correcto
 //De caso contrario, muestra un mensaje de error
@@ -20,7 +24,8 @@ const validateLoginCorreo = (correo)=>{
 
 //función que prepara los datos para enviarlos al back
 //en caso que los datos no sean correctos o no válidos, maneja el error
-//además, almacena la respuesta en el localstorage, pues es la autenticación
+
+//además, se obtiene el login y este se almacena  en el localstorage
 async function enviarDatosLogin(data) {
     let URL = 'https://ticketproject-br3d.onrender.com';
     try {
@@ -34,18 +39,26 @@ async function enviarDatosLogin(data) {
 
         // Verificamos si la respuesta fue exitosa
         if (!response.ok) {
-            document.getElementById('correoLog').style.display = 'block'; // Muestra el mensaje antes de lanzar el error
+            // document.getElementById('correoLogin').style.display = 'block'; // Muestra el mensaje antes de lanzar el error
             throw new Error('Error en la solicitud: ' + response.statusText);
         }
 
         // Procesamos la respuesta como JSON
         const respuesta = await response.json();
 
+        //alerta de la solicitud exitosa de la autenticación
+        loginAlertValidated.showModal();
+        loginAlertValidatedText.innerText = 'Datos validados. Accediendo al programa';
+        setTimeout(()=>{
+            loginAlertValidated.close();
+        },2000)
+
         // Almacenamos los datos en localStorage
         localStorage.setItem('validationCode', respuesta.access_token);
         localStorage.setItem('token_type', respuesta.token_type);
         console.log('Respuesta de la API:', respuesta);
 
+        //Petición que obtiene los datos del login del usuario
         try {
             const response = await fetch(`${URL}/auth/login/`, {
                 method: 'POST',
@@ -66,19 +79,37 @@ async function enviarDatosLogin(data) {
     
             // Procesamos la respuesta como JSON
             const respuesta = await response.json();
-    
+
             // Almacenamos los datos en localStorage
             localStorage.setItem('id', respuesta.id);
             localStorage.setItem('rol', respuesta.rol);
             console.log('Respuesta de la API:', respuesta);
+
+            //Si la obtención de los datos es correcta, se redirige a la página
+            //principal de tickets
+            window.location.href = '/src/views/tickets/';
             
     
         } catch (error) {
             alert('Error al ingresar:', error);
+
+            loginAlertError.showModal();
+            loginAlertErrorText.innerText = 'Error en la obtención de datos';
+
+            setTimeout(()=>{
+                loginAlertError.close();
+            },2000)
         }
 
     } catch (error) {
-        alert('Error al ingresar:', error);
+        console.log('Error al ingresar:', error);
+        //alerta de la solicitud de autenticación
+        loginAlertError.showModal();
+        loginAlertErrorText.innerText = 'Correo o contraseña incorrectos';
+
+        setTimeout(()=>{
+            loginAlertError.close();
+        },2000)
     }
 }
 

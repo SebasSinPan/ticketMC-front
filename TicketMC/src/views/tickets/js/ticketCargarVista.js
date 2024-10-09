@@ -1,7 +1,7 @@
 const ticketsContainer = document.getElementById('container__ticket');
 
 let rol = localStorage.getItem('rol');
-if (rol == 'cliente'){
+if (rol == 'user'){
     
     ticketsContainer.appendChild(createTicketCreator())
 

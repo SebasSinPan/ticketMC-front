@@ -210,7 +210,7 @@ main{
 /* Términos y condiciones */
 /* --------------------------------------------------------------- */
 
-dialog {
+dialog#terminosModal {
     width: 450px;
     height: 450px;
     padding: 40px;
@@ -223,41 +223,41 @@ dialog {
     scrollbar-width: thin;
 }
 
-dialog h2 + p{
+dialog#terminosModal h2 + p{
     margin-bottom: 30px;
     padding: 10px 0;
     font-size: 14px;
     font-weight: 600;
 }
 
-dialog h2 + p span{
+dialog#terminosModal h2 + p span{
     font-weight: 200;
 }
 
-dialog .condiciones{
+dialog#terminosModal .condiciones{
     width: 100%;
     margin-top: 10px;
     overflow-y: auto;
 }
 
-dialog .condiciones h3{
+dialog#terminosModal .condiciones h3{
     padding: 15px 5px;
 }
 
-dialog .condiciones p{
+dialog#terminosModal .condiciones p{
     padding: 5px;
     font-size: 14px;
 }
 
-dialog .condiciones ul{
+dialog#terminosModal .condiciones ul{
     padding: 5px 0;
 }
 
-dialog .condiciones li span{
+dialog#terminosModal .condiciones li span{
     font-weight: 600;
 }
 
-dialog .condiciones li{
+dialog#terminosModal .condiciones li{
     padding-inline: 5px;
     font-size: 14px;
 }
@@ -404,3 +404,52 @@ dialog .condiciones li{
     z-index: 100;
     background-color: var(--bg-cover-color);
 } 
+
+/* --------------------------------------------------------------- */
+/* Alertas */
+/* --------------------------------------------------------------- */
+
+.generalAlert{
+    width: 500px;
+    height: 100px;
+    display: flex;
+    border-radius: 20px;
+    align-items: center;
+    gap: 15px;
+    border: 1px solid var(--font-base-color);
+}
+
+.generalAlert::backdrop{
+    background-color: #00000065;
+}
+
+.generalAlert div{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 3px solid #FCFCFC;
+}
+
+.generalAlert div img{
+    width: 25px;
+    height: 25px;
+}
+
+.generalAlert p{
+    font-size: 20px;
+    font-stretch: expanded;
+}
+
+.generalAlert.errorAlert{
+    background-color: #e41749;
+}
+
+.generalAlert.successAlert{
+    background-color: #12c99b;
+}
+.generalAlert.validationAlert{
+    background-color: #111827;
+}
