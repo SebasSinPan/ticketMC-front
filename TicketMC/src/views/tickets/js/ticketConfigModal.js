@@ -2,6 +2,8 @@ const configModalOpen = document.getElementById('container__nav--config-btn');
 const configModal = document.getElementById('nav--config-modal');
 const configModalClose = document.getElementById('config-modal--exit');
 
+//Permite abrir con el botón de configuración y
+//da las animaciones para la apertura del modal
 configModalOpen.addEventListener('click', ()=>{
     configModal.classList.add('fade-in-modal');
     configModal.showModal();
@@ -11,6 +13,8 @@ configModalOpen.addEventListener('click', ()=>{
     });
 })
 
+//permite cerrar el modal clickeando a la x
+//da animaciones de cierre
 configModalClose.addEventListener('click', ()=>{
     configModal.classList.add('fade-out-modal');
 
@@ -41,6 +45,7 @@ configModal.addEventListener('click', e =>{
         }, {once: true});
     }   
 });
+
 //--------------------------------------------------------------------
 //determinación del tema en las preferencias del usuario
 //--------------------------------------------------------------------
@@ -86,3 +91,5 @@ themeColorPreference();
 temaOscuroCheckbox.addEventListener('change', () => {
     themeColorPreference();
 });
+
+//TODO : Si se carga la página en modo oscuro, no funciona

@@ -30,9 +30,9 @@
             <section>
                 <h2 class="container__nav--title">Categorias</h2>
                 <ul class="container__nav--list">
-                    <li><a href="">Mis tickets</a></li>
-                    <li><a href="">Tickets activos</a></li>
-                    <li><a href="">Historial de tickets</a></li>
+                    <li><a id="nav--list-btn-main">Tickets abiertos</a></li>
+                    <li><a id="nav--list-btn-completed">Tickets resueltos</a></li>
+                    <li><a id="nav--list-btn-history">Historial de tickets</a></li>
                 </ul>
             </section>
             <section class="container__nav--config">
@@ -86,7 +86,7 @@
                                 <h2 class="details--title">Título del ticket</h2>
                             </div>
                             <div class="details__header--response">
-                                <button>Responder</button>
+                                <button id="details__header--response-btn">Responder</button>
                             </div>
                         </div>
                         <div class="details__data">
@@ -120,7 +120,7 @@
                     </div>
                 </section>
             </dialog>       
-            <section class="container__ticket--filters">
+            <section id="container__ticket--ticket-filters" class="container__ticket--filters">
                 <section class="container__ticket--type">
                     <button>Recibidos</button>
                     <button>Solucionados</button>
@@ -134,145 +134,102 @@
                     </div>
                 </section>
             </section>
-            <section class="container__ticket--ticket">
-                <div class="ticket select-ticket">    
-                    <div class="ticket--title">
-                        <h3 class="title--name">Lorem Ipsum dolor sit amet sit met</h3>
-                        <span class="title--prio ticket-prio">media</span>
-                    </div>
-                    <div class="ticket--description">
-                        <p>Lorem Ipsum Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum</p>
-                    </div>
-                    <div class="ticket--state">
-                        <span class="ticket-state">Completado</span>
-                    </div>
-                </div>
+            <section id="container__ticket--ticket" class="container__ticket--ticket">
             </section>
-        </main>
-        <section class="container__resolve">
-            <div class="container__resolve--title">
-                <h2>Ticket # <span class="resolve--title-number">000</span></h2>
-            </div>
-            <div class="container__resolve--response">
-                <article class="resolve--response-ticket">
-                    <div>
-                        <h3>Detalles del ticket</h3>
-                    </div>
-                    <div class="response-ticket-container">
-                        <div class="response-ticket-title">
-                            <h4>Ticket name</h4>
-                        </div>
-                        <div class="response-ticket-prio">
-                            <p>Prioridad: <span>Prio</span></p>
-                        </div>
-                        <div class="response-ticket-description">
-                            <p>Descripción</p>
-                        </div>
-                    </div>
-                </article>
-                <article class="resolve--response-answer">
-                    <h3>Resuelve el ticket</h3>
-                    <textarea name="" id=""
-                                placeholder="Escribe la solución aquí..."
-                    ></textarea>
-                    <h4>Adjuntar archivo</h4>
-                    <input type="file" multiple accept="image/*">
-                    <div class="response-answer-btn">
-                        <button class="response-answer-btn-cancel">Cancel</button>
-                        <button>
-                            <img src="img/ticket_response_send.png" alt="">
-                            Enviar respuesta</button>
-                    </div>
-                </article>
-            </div>
-        </section>
-        <section class="container__history">
-            <section class="container__ticket--filters">
-                <section class="container__ticket--type">
-                    <button>Recibidos</button>
-                    <button>Solucionados</button>
-                </section>
-                <section class="container__ticket--searcher">
-                    <div>
-                        <input type="text" placeholder="Buscar">
-                    </div>
-                    <div>
-                        <button></button>
-                    </div>
-                </section>
-            </section>
-            <section class="container__history--ticket">
-                <div class="history--ticket-title">
-                    <h2>Nombre del ticket</h2>
-                    <span>State</span>
+            <section id="container__resolve" class="container__resolve">
+                <div class="container__resolve--title">
+                    <h2>Ticket # <span class="resolve--title-number">000</span></h2>
                 </div>
-                <div class="history--ticket-solution">
-                    <div class="ticket-solution-title">
-                        <h3>Tech name</h3>
-                        <span>Fecha</span>
-                    </div>
-                    <p>Solution description</p>
-                </div>
-                <div class="history--ticket-problem">
-                    <div class="ticket-problem-title">
-                        <h3>Usuario name</h3>
-                        <span>Fecha</span>
-                    </div>
-                    <p>Problem description</p>
-                </div>
-                <div class="history--ticket-details">
-                    <button id="history-open-details">Ver detalles del ticket</button>
-                </div>
-            </section>
-            <dialog id="history--deatils-modal" class="container__history--details container__ticket--details">
-                <section class="details">
-                    <div class="details__header--container details__header--container-response">
-                        <div class="details__header">
-                            <div class="details__header--title">
-                                <h2 class="details--title">Título del ticket</h2>
-                            </div>
-                        </div>
-                        <div class="details__data">
-                            <div class="details__data--state">
-                                <p>
-                                    <span>Estado: </span><span class="details--state">Estado del ticket</span>
-                                </p>
-                                <p>
-                                    <span>Prioridad: </span><span class="details--prio">Prioridad del ticket</span>
-                                </p>
-                            </div>
-                            <div class="details__data--date">
-                                <p>
-                                    <span>Fecha: </span>Fecha del ticket
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="details__description">
-                        <p class="details--description">
-                            Lorem: Ipsum dolor sit sit amet, consectetur adipiscing elit. Donec ornare enim a efficitur laoreet. Sed ullamcorper laoreet magna, eget ornare justo ornare eu. Aenean sagittis, ipsum a laoreet maximus, leo mauris vehicula magna, ut facilisis ipsum lacus eget ipsum. Vestibulum elementum elit in nisi tempus gravida. Quisque sit amet ante. eget ornare justo ornare eu. Aenean sagittis, ipsum a laoreet maximus, leo mauris vehicula magna, ut facilisis ipsum lacus eget ipsum. Vestibulum elementum e
-                        </p>
-                    </div>
-                    <div class="details__images">
-                        <p>Imágenes anexas</p>
+                <div class="container__resolve--response">
+                    <article class="resolve--response-ticket">
                         <div>
-                            <p></p>
-                            <p></p>
-                            <p></p>
+                            <h3>Detalles del ticket</h3>
                         </div>
+                        <div class="response-ticket-container">
+                            <div class="response-ticket-title">
+                                <h4 class="response-ticket-title__name">Ticket name</h4>
+                            </div>
+                            <div class="response-ticket-prio">
+                                <p>Prioridad: <span class="response-ticket-prio__data">Prio</span></p>
+                            </div>
+                            <div class="response-ticket-description">
+                                <p class="response-ticket-description__text">Descripción</p>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="resolve--response-answer">
+                        <h3>Resuelve el ticket</h3>
+                        <textarea name="" id=""
+                                    placeholder="Escribe la solución aquí..."
+                        ></textarea>
+                        <h4>Adjuntar archivo</h4>
+                        <input type="file" multiple accept="image/*">
+                        <div class="response-answer-btn">
+                            <button class="response-answer-btn-cancel">Cancel</button>
+                            <button class="response-answer-btn-send">
+                                <img src="img/ticket_response_send.png" alt="">
+                                Enviar respuesta</button>
+                        </div>
+                    </article>
+                </div>
+            </section>
+            <section id="container__history" class="container__history">
+                algo
+            </section>
+            <section id="container__completed" class="container__completed">
+                <section class="container__completed--ticket">
+                    <div class="completed--ticket-title">
+                        <h2>Nombre del ticket</h2>
+                        <span>Resuelto</span>
                     </div>
-                    <div class="details__response">
-                        <div class="details__response--title">
-                            <h3>Respuesta: </h3>
+                    <div class="completed--ticket-solution">
+                        <div class="ticket-solution-title">
+                            <h3>Tech name</h3>
+                            <span>Fecha</span>
                         </div>
-                        <div class="details__response--data">
-                            <p class="response--data-tech">Nombre del técnico</p>
-                            <p class="response--data-date">Fecha</p>
+                        <p>Solution description</p>
+                    </div>
+                    <div class="completed--ticket-problem">
+                        <div class="ticket-problem-title">
+                            <h3>Usuario name</h3>
+                            <span>Fecha</span>
                         </div>
-                        <div class="details__response--description">
-                            <p class="response--description-text">Lorem Ipsum</p>
+                        <p>Problem description</p>
+                    </div>
+                    <div class="completed--ticket-details">
+                        <button id="completed-open-details">Ver detalles del ticket</button>
+                    </div>
+                </section>
+                <dialog id="completed--deatils-modal" class="container__completed--details container__ticket--details">
+                    <section class="details">
+                        <div class="details__header--container details__header--container-response">
+                            <div class="details__header">
+                                <div class="details__header--title">
+                                    <h2 class="details--title">Título del ticket</h2>
+                                </div>
+                            </div>
+                            <div class="details__data">
+                                <div class="details__data--state">
+                                    <p>
+                                        <span>Estado: </span><span class="details--state">Estado del ticket</span>
+                                    </p>
+                                    <p>
+                                        <span>Prioridad: </span><span class="details--prio">Prioridad del ticket</span>
+                                    </p>
+                                </div>
+                                <div class="details__data--date">
+                                    <p>
+                                        <span>Fecha: </span>Fecha del ticket
+                                    </p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="details__response--images details__images">
+                        <div class="details__description">
+                            <p class="details--description">
+                                Lorem: Ipsum dolor sit sit amet, consectetur adipiscing elit. Donec ornare enim a efficitur laoreet. Sed ullamcorper laoreet magna, eget ornare justo ornare eu. Aenean sagittis, ipsum a laoreet maximus, leo mauris vehicula magna, ut facilisis ipsum lacus eget ipsum. Vestibulum elementum elit in nisi tempus gravida. Quisque sit amet ante. eget ornare justo ornare eu. Aenean sagittis, ipsum a laoreet maximus, leo mauris vehicula magna, ut facilisis ipsum lacus eget ipsum. Vestibulum elementum e
+                            </p>
+                        </div>
+                        <div class="details__images">
                             <p>Imágenes anexas</p>
                             <div>
                                 <p></p>
@@ -280,46 +237,77 @@
                                 <p></p>
                             </div>
                         </div>
-                    </div>
-                </section>
-            </dialog>
-            <script>
-                const openResponseBtn = document.getElementById('history-open-details');
-                const responseSumaryModal = document.getElementById('history--deatils-modal');
-
-                openResponseBtn.addEventListener('click', ()=>{
-                    responseSumaryModal.showModal();
-                })
-
-                responseSumaryModal.addEventListener('click', e =>{
-                    const dialogDimensions = responseSumaryModal.getBoundingClientRect();
-                    if (
-                        e.clientX < dialogDimensions.left ||
-                        e.clientX > dialogDimensions.right ||
-                        e.clientY < dialogDimensions.top ||
-                        e.clientY > dialogDimensions.bottom
-                    ) {
-                        //agrega una animación a la salida del modal
-                        responseSumaryModal.classList.add('fade-out-modal');
-                        
-                        //tras ocurrir la animación, la animación se remueve
-                        responseSumaryModal.addEventListener('animationend', () => {
-                            responseSumaryModal.close();
-                            responseSumaryModal.classList.remove('fade-out-modal');
-                        }, {once: true});
-                    }
-                })
-            </script>
-        </section>
+                        <div class="details__response">
+                            <div class="details__response--title">
+                                <h3>Respuesta: </h3>
+                            </div>
+                            <div class="details__response--data">
+                                <p class="response--data-tech">Nombre del técnico</p>
+                                <p class="response--data-date">Fecha</p>
+                            </div>
+                            <div class="details__response--description">
+                                <p class="response--description-text">Lorem Ipsum</p>
+                            </div>
+                            <div class="details__response--images details__images">
+                                <p>Imágenes anexas</p>
+                                <div>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </dialog>
+                <script>
+                    const openResponseBtn = document.getElementById('completed-open-details');
+                    const responseSumaryModal = document.getElementById('completed--deatils-modal');
+    
+                    openResponseBtn.addEventListener('click', ()=>{
+                        responseSumaryModal.showModal();
+                    })
+    
+                    responseSumaryModal.addEventListener('click', e =>{
+                        const dialogDimensions = responseSumaryModal.getBoundingClientRect();
+    
+                        //TODO : La animación de entrada no funciona
+                        responseSumaryModal.classList.add('fade-in-modal');
+                        responseSumaryModal.showModal();
+                        responseSumaryModal.addEventListener('animationend', ()=>{
+                            responseSumaryModal.classList.remove('fade-in-modal');
+                        })
+    
+                        if (
+                            e.clientX < dialogDimensions.left ||
+                            e.clientX > dialogDimensions.right ||
+                            e.clientY < dialogDimensions.top ||
+                            e.clientY > dialogDimensions.bottom
+                        ) {
+                            //agrega una animación a la salida del modal
+                            responseSumaryModal.classList.add('fade-out-modal');
+                            
+                            //tras ocurrir la animación, la animación se remueve
+                            responseSumaryModal.addEventListener('animationend', () => {
+                                responseSumaryModal.close();
+                                responseSumaryModal.classList.remove('fade-out-modal');
+                            }, {once: true});
+                        }
+                    })
+                </script>
+            </section>
+        </main>
     </div>
     <script src="js/ticketComponents.js"></script>
     <script src="js/ticketCargarVista.js"></script>
     <script src="js/ticketConfigModal.js"></script>
-    <script src="js/ticketStyle.js"></script>
-    <script src="js/ticket.js"></script>
     <script src="js/ticketCreatorStyle.js"></script>
+    <script src="js/ticketStyle.js"></script>
+    <script src="js/ticketAssig.js"></script>
+    <script src="js/ticketModalsTemplates.js"></script>
+    <script src="js/ticketViewTransition.js"></script>
     <script src="js/ticketDarkTheme.js"></script>
 
     <script src="../../services/crearTIckets.js"></script>
+    <script src="../../services/responderTicket.js"></script>
 </body>
 </html>

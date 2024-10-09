@@ -24,6 +24,7 @@
     --prio-alta: #EA2306;
     --prio-media: #577991;
     --prio-baja: #0095FF;
+
     --state-complete: #0D00FF;
     --state-onhold: #7D3EE6;
     --state-unseen: #577991;
@@ -189,6 +190,7 @@ header ul li{
 .container__nav--list li:hover{
     background-color: var(--main-color-nav-contrast);
     transition: .5s;
+    cursor: pointer;
 }
 
 .container__nav--config > span{
@@ -378,7 +380,6 @@ header ul li{
     height: 100%;
     position: relative;
     padding: 35px 21px;
-    display: none;
 }
 
 /*Botones*/
@@ -458,6 +459,7 @@ header ul li{
     overflow: auto;
     scrollbar-width: thin;
     scroll-behavior: smooth;
+    /* display: none; */
 }
 
 /* --------------------------------------------------------------- */
@@ -540,6 +542,10 @@ header ul li{
     border-bottom-right-radius: 10px 10px;
 }
 
+.ticket-hidden-info{
+    display: none;
+}
+
 /* --------------------------------------------------------------- */
 /* Detalles del ticket - Contenedor */
 /* --------------------------------------------------------------- */
@@ -574,7 +580,7 @@ header ul li{
 .details .details__header--container{
     padding: 15px 0;
     position: sticky;
-    top: 0;
+    top: 1px;
     background: linear-gradient(var(--bg-light-white) 85%,
                                 transparent);
     height: 100%;
@@ -692,10 +698,10 @@ header ul li{
 /* --------------------------------------------------------------- */
 
 .container__resolve{
-    display: none;
     width: 100%;
     height: 100%;
     padding: 30px;
+    display: none;
 }
 
 .container__resolve--title{
@@ -743,6 +749,20 @@ header ul li{
 .response-ticket-prio{
     margin-bottom: 60px;
     font-size: 14px;
+}
+
+.response-ticket-prio .response-ticket-prio__data{
+    display: inline-block;
+    text-align: center;
+    padding: 2px 15px;
+    font-size: 12px;
+    font-weight: 600;
+    background-color: var(--state-onhold);
+    color: var(--font-btn-white);
+    border-top-left-radius: 10px 10px;
+    border-bottom-left-radius: 10px 10px;
+    border-top-right-radius: 10px 10px;
+    border-bottom-right-radius: 10px 10px;
 }
 
 .response-ticket-description{
@@ -874,11 +894,32 @@ header ul li{
 .container__history{
     width: 100%;
     height: 100%;
+    padding: 15px 0 35px 0;
     position: relative;
-    padding: 35px 21px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 290px);
+    grid-auto-rows: 180px;
+    justify-content: center;
+    gap: 20px;
+    overflow: auto;
+    scrollbar-width: thin;
+    scroll-behavior: smooth;
+    display: none;
 }
 
-.container__history--ticket{
+/* --------------------------------------------------------------- */
+/* Ver historial de ticket */
+/* --------------------------------------------------------------- */
+
+.container__completed{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    padding: 20px 21px;
+    display: none;
+}
+
+.container__completed--ticket{
     width: 100%;
     padding: 25px 30px;
     border-radius: 5px;
@@ -886,28 +927,38 @@ header ul li{
     margin-top: 20px;
 }
 
-.container__history--ticket:hover{
+.container__completed--ticket:hover{
     outline: 1px solid var(--contour-color);
 }
 
-.history--ticket-title{
+.completed--ticket-title{
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 30px;
 }
 
-.history--ticket-title h2{
+.completed--ticket-title h2{
     font-weight: 600;
     font-size: 20px;
 }
 
-.history--ticket-title span{
-    color: red;
+.completed--ticket-title span{
+    display: inline-block;
+    text-align: center;
+    padding: 2px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    background-color: var(--state-complete);
+    color: var(--font-btn-white);
+    border-top-left-radius: 10px 10px;
+    border-bottom-left-radius: 10px 10px;
+    border-top-right-radius: 10px 10px;
+    border-bottom-right-radius: 10px 10px;
 }
 
-.history--ticket-solution,
-.history--ticket-problem{
+.completed--ticket-solution,
+.completed--ticket-problem{
     margin: 15px;
     padding: 15px;
     width: 100%;
@@ -922,22 +973,22 @@ header ul li{
     font-size: 14px;
 }
 
-.history--ticket-solution h3,
-.history--ticket-problem h3{
+.completed--ticket-solution h3,
+.completed--ticket-problem h3{
     font-weight: 600;
     font-size: 16px;
     margin-bottom: 15px;
 }
 
-.history--ticket-problem{
+.completed--ticket-problem{
     background-color: var(--bg-light-gray);
 }
 
-.history--ticket-details{
+.completed--ticket-details{
     margin-top: 45px;
 }
 
-.history--ticket-details button{
+.completed--ticket-details button{
     padding: 7px 15px;
     font-weight: 600;
     border-radius: 5px;
@@ -947,7 +998,7 @@ header ul li{
     transition: background-color .3s ease-in, transform .3s ease;
 }
 
-.history--ticket-details button:hover{
+.completed--ticket-details button:hover{
     transform: scale(1.05);
     background-color: var(--main-color-highlight);
     cursor: pointer;

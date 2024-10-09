@@ -158,5 +158,4 @@ for (let i = 0; i < 30; i++) {
     MOTA.style.opacity = OPACIDAD;
 
     BODY.appendChild(MOTA);
-    console.log('ago')
 }

@@ -55,9 +55,9 @@ MODAL.addEventListener('click', e => {
 //                          Datos de los tickets
 // ------------------------------------------------------------------------
 
-//Obtiene los datos de los tickets de un json y, con ellos, llama al js de
-//componentes para crear, elemento por elemento, el ticket
-async function cargarDatos() {
+// Obtiene los datos de los tickets de un json y, con ellos, llama al js de
+// componentes para crear, elemento por elemento, el ticket
+async function loadClosedTickets() {
     try {
         const response = await fetch('datos.json');
         const datos = await response.json();
@@ -85,4 +85,4 @@ async function cargarDatos() {
     }
 }
 
-window.onload = cargarDatos;
+window.onload = loadClosedTickets;

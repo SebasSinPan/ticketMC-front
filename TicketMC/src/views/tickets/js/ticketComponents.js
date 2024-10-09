@@ -173,7 +173,7 @@ let createTicketCreator = () => {
 }
 
 //crea los tickets que se muestran al usuario
-let createTicket = (title, description, prio, state) =>{
+let createTicket = (id, fecha, title, description, prio, state) =>{
     // Crea el contenedor principal
     const ticketDiv = document.createElement('div');
     ticketDiv.className = 'ticket select-ticket';
@@ -219,12 +219,29 @@ let createTicket = (title, description, prio, state) =>{
     // Inyección Estado
     stateDiv.appendChild(stateElement);
 
+    // Div info invisible
+    const invisibleInfo = document.createElement('div');
+    invisibleInfo.className = 'ticket-hidden-info';
+    
+    // Párrafo del id
+    const hiddenId = document.createElement('p');
+    hiddenId.className = 'ticket-hidden-info__id';
+    hiddenId.textContent = id;
+
+    // Párrafo del id
+    const hiddenDate = document.createElement('p');
+    hiddenDate.className = 'ticket-hidden-info__date';
+    hiddenDate.textContent = fecha;
+
+    // Inyección información invisible
+    invisibleInfo.appendChild(hiddenId)
+    invisibleInfo.appendChild(hiddenDate)
+
     // Inyección al Div del ticket
     ticketDiv.appendChild(titleDiv);
     ticketDiv.appendChild(descriptionDiv);
     ticketDiv.appendChild(stateDiv);
+    ticketDiv.appendChild(invisibleInfo);
 
-    // Inyectar Ticket al contenedor
-    // ticketContainer.appendChild(ticketDiv);
     return ticketDiv;
 }

@@ -73,6 +73,7 @@ const validarDatosRegistro = (nombre, correo, pass1, pass2)=>{
 //función que prepara los datos para enviarlos al back
 //en caso que los datos no sean correctos o no válidos, maneja el error
 async function enviarRegistro(data) {
+    let URL = 'https://ticketproject-br3d.onrender.com';
     try {
         const response = await fetch(`${URL}/auth/register/`, {
             method: 'POST', 
@@ -92,6 +93,7 @@ async function enviarRegistro(data) {
         console.log('Respuesta de la API:', respuesta);
 
     } catch (error) {
+        alert(`${error}. Problemas al realizar el registro, revise que su correo no haya sido utilizado aún`)
         console.error('Error al enviar datos:', error);
     }
 }
@@ -108,14 +110,14 @@ registerForm.addEventListener('submit', async ev =>{
     const isValid = validarDatosRegistro(nombreRegistro, correoRegistro, contrasennaRegistro, contrasennaRegistro_rep);
 
     if (isValid){
+        // nombreRegistro : nombreRegistro,
         const registerData = {
-            nombreRegistro : nombreRegistro,
-            correoRegistro : correoRegistro,
-            contrasennaRegistro : contrasennaRegistro
+            email : correoRegistro,
+            password : contrasennaRegistro
         }
 
-        enviarRegistro(registerData)
+        enviarRegistro(registerData);
+        registerForm.reset();
     }
 
-    // registerForm.reset();
 })
