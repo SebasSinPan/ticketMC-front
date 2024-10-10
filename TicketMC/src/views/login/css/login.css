@@ -417,6 +417,7 @@ dialog#terminosModal .condiciones li{
     align-items: center;
     gap: 15px;
     border: 1px solid var(--font-base-color);
+    color: var(--font-btn-white);
 }
 
 .generalAlert::backdrop{

@@ -100,7 +100,7 @@
                             </div>
                             <div class="details__data--date">
                                 <p>
-                                    <span>Fecha: </span>Fecha del ticket
+                                    <span>Fecha: </span><span class="details--date">Fecha del ticket</span>
                                 </p>
                             </div>
                         </div>
@@ -119,12 +119,13 @@
                         </div>
                     </div>
                 </section>
-            </dialog>       
+            </dialog>
             <section id="container__ticket--ticket-filters" class="container__ticket--filters">
                 <section class="container__ticket--type">
-                    <button>Recibidos</button>
-                    <button>Solucionados</button>
-                </section>
+                    <button id="btns-activeOpenTicketsView" class="buttonViewActive">Abiertos</button>
+                    <button id="btns-activeClosedTicketsView" class="buttonViewDeactive">Cerrados</button>
+                    <button id="btns-activeAllTicketsView" class="buttonViewDeactive">Todos</button>
+                </section>    
                 <section class="container__ticket--searcher">
                     <div>
                         <input type="text" placeholder="Buscar">
@@ -158,29 +159,33 @@
                         </div>
                     </article>
                     <article class="resolve--response-answer">
-                        <h3>Resuelve el ticket</h3>
-                        <textarea name="" id=""
-                                    placeholder="Escribe la solución aquí..."
-                        ></textarea>
-                        <h4>Adjuntar archivo</h4>
-                        <input type="file" multiple accept="image/*">
-                        <div class="response-answer-btn">
-                            <button class="response-answer-btn-cancel">Cancel</button>
-                            <button class="response-answer-btn-send">
-                                <img src="img/ticket_response_send.png" alt="">
-                                Enviar respuesta</button>
-                        </div>
+                        <form id="resolve--response-form">
+                            <h3>Solución del ticket</h3>
+                            <textarea name="" id="response-answer-solution"
+                                        placeholder="Escribe la solución aquí..."
+                                        required
+                            ></textarea>
+                            <h4>Adjuntar archivo</h4>
+                            <input type="file" multiple accept="image/*">
+                            <div class="response-answer-btn">
+                                <button class="response-answer-btn-cancel">Cancel</button>
+                                <button class="response-answer-btn-send" 
+                                        type="submit"
+                                >
+                                    <img src="img/ticket_response_send.png" alt="">
+                                    Enviar respuesta</button>
+                            </div>
+                        </form>
                     </article>
                 </div>
             </section>
             <section id="container__history" class="container__history">
-                algo
             </section>
             <section id="container__completed" class="container__completed">
                 <section class="container__completed--ticket">
                     <div class="completed--ticket-title">
                         <h2>Nombre del ticket</h2>
-                        <span>Resuelto</span>
+                        <span>Cerrado</span>
                     </div>
                     <div class="completed--ticket-solution">
                         <div class="ticket-solution-title">
@@ -211,7 +216,7 @@
                             <div class="details__data">
                                 <div class="details__data--state">
                                     <p>
-                                        <span>Estado: </span><span class="details--state">Estado del ticket</span>
+                                        <span>Estado: </span><span class="details--state">Cerrado</span>
                                     </p>
                                     <p>
                                         <span>Prioridad: </span><span class="details--prio">Prioridad del ticket</span>
@@ -229,14 +234,14 @@
                                 Lorem: Ipsum dolor sit sit amet, consectetur adipiscing elit. Donec ornare enim a efficitur laoreet. Sed ullamcorper laoreet magna, eget ornare justo ornare eu. Aenean sagittis, ipsum a laoreet maximus, leo mauris vehicula magna, ut facilisis ipsum lacus eget ipsum. Vestibulum elementum elit in nisi tempus gravida. Quisque sit amet ante. eget ornare justo ornare eu. Aenean sagittis, ipsum a laoreet maximus, leo mauris vehicula magna, ut facilisis ipsum lacus eget ipsum. Vestibulum elementum e
                             </p>
                         </div>
-                        <div class="details__images">
+                        <!-- <div class="details__images">
                             <p>Imágenes anexas</p>
                             <div>
                                 <p></p>
                                 <p></p>
                                 <p></p>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="details__response">
                             <div class="details__response--title">
                                 <h3>Respuesta: </h3>
@@ -248,53 +253,30 @@
                             <div class="details__response--description">
                                 <p class="response--description-text">Lorem Ipsum</p>
                             </div>
-                            <div class="details__response--images details__images">
+                            <!-- <div class="details__response--images details__images">
                                 <p>Imágenes anexas</p>
                                 <div>
                                     <p></p>
                                     <p></p>
                                     <p></p>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </section>
                 </dialog>
-                <script>
-                    const openResponseBtn = document.getElementById('completed-open-details');
-                    const responseSumaryModal = document.getElementById('completed--deatils-modal');
-    
-                    openResponseBtn.addEventListener('click', ()=>{
-                        responseSumaryModal.showModal();
-                    })
-    
-                    responseSumaryModal.addEventListener('click', e =>{
-                        const dialogDimensions = responseSumaryModal.getBoundingClientRect();
-    
-                        //TODO : La animación de entrada no funciona
-                        responseSumaryModal.classList.add('fade-in-modal');
-                        responseSumaryModal.showModal();
-                        responseSumaryModal.addEventListener('animationend', ()=>{
-                            responseSumaryModal.classList.remove('fade-in-modal');
-                        })
-    
-                        if (
-                            e.clientX < dialogDimensions.left ||
-                            e.clientX > dialogDimensions.right ||
-                            e.clientY < dialogDimensions.top ||
-                            e.clientY > dialogDimensions.bottom
-                        ) {
-                            //agrega una animación a la salida del modal
-                            responseSumaryModal.classList.add('fade-out-modal');
-                            
-                            //tras ocurrir la animación, la animación se remueve
-                            responseSumaryModal.addEventListener('animationend', () => {
-                                responseSumaryModal.close();
-                                responseSumaryModal.classList.remove('fade-out-modal');
-                            }, {once: true});
-                        }
-                    })
-                </script>
             </section>
+            <dialog id="ticketAlertError" class="generalAlert errorAlert">
+                <div>
+                    <img src="img/ticket_alert.png" alt="Logo de fracaso en la operación">
+                </div>
+                <p id="registerAlertError__message">Texto modificable de la alerta</p>
+            </dialog>
+            <dialog id="ticketAlertSuccess" class="generalAlert successAlert">
+                <div>
+                    <img src="img/ticket_success.png" alt="Logo de éxito en la operación">
+                </div>
+                <p id="registerAlertSuccess__message">Texto modificable de la alerta</p>
+            </dialog>
         </main>
     </div>
     <script src="js/ticketComponents.js"></script>

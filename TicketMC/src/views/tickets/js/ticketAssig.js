@@ -2,30 +2,57 @@
 //                          Tickets abiertos
 // ------------------------------------------------------------------------
 
+let date = new Date();
+        console.log(date.toISOString())
 //Obtiene los datos del back y, con ellos, llama al js de
 //componentes para crear, elemento por elemento, el ticket
 async function loadOpenTickets() {
+    let URL = 'https://ticketproject-br3d.onrender.com';
     try {
-        //Con un fetch, lee los datos de los tickets almacenados
-        const response = await fetch('datos.json');
+        const response = await fetch(`${URL}/ticket/`,{
+            method: 'GET',
+            headers: {
+                // 'Content-Type': 'application/json',
+                'token' : localStorage.getItem('validationCode')
+            },
+        });
         const datos = await response.json();
+        console.log(datos)
+        
+        let capitalizeTicketData = (data) => {
+            return data.charAt(0).toUpperCase() + data.slice(1)
+        }
 
-        //asigna cada dato a una variable
+        // asigna cada dato a una variable
         for (let i = 0; i < datos.length; i++) {
             
-            let dataTicketId = datos[i].ticketId;
-            let dataTticketDate = datos[i].ticketDate;
-            let dataTticketTitle = datos[i].ticketTitle;
-            let dataTticketDescription = datos[i].ticketDescription;
-            let dataTticketPrio = datos[i].ticketPrio;
-            let dataTticketState = datos[i].ticketState;
+            let dataTicketId = datos[i].id;
+            let dataTticketDate = datos[i].created_at.slice(0,10);
+            let dataTticketTitle = capitalizeTicketData(datos[i].title);
+            let dataTticketDescription = capitalizeTicketData(datos[i].description);
+            let dataTticketPrio = capitalizeTicketData(datos[i].priority);
+            let dataTticketState = capitalizeTicketData(datos[i].status);
 
-            //con una función ya definida, crea el elemento del ticket
+            //Ahora, dependiendo de la información del ticket, se van a realizar
+            //algunos filtros por vista
+
+            //Vista principal, sólo tickets abiertos
             const ticketContainer = document.getElementById('container__ticket--ticket');
+            if (dataTticketState == 'Abierto'){
+                ticketContainer.appendChild(createTicket(dataTicketId, dataTticketDate, dataTticketTitle, dataTticketDescription, dataTticketPrio, dataTticketState));
+            }
 
-            // // Inyectar Ticket al contenedor
-            ticketContainer.appendChild(createTicket(dataTicketId, dataTticketDate, dataTticketTitle, dataTticketDescription, dataTticketPrio, dataTticketState));
+            //Vista tickets cerrados, sólo tickets cerrados
+            // const completedTicketContainer = document.getElementById('container__completed');
+            // if (dataTticketState == 'Cerrado'){
+            //     completedTicketContainer.appendChild(createTicketCompleted(dataTicketId, dataTticketDate, dataTticketTitle, dataTticketState, dataTicketTech, dataTicketSolution, dataTicketUser, dataTticketDescription, dataTticketPrio));
+            // }
 
+            //Vista todos los tickets, todos los tickets
+            const allTicketContainer = document.getElementById('container__history');
+            allTicketContainer.appendChild(createTicket(dataTicketId, dataTticketDate, dataTticketTitle, dataTticketDescription, dataTticketPrio, dataTticketState));
+            
+            
             //aplica los estilos del ticket según su información 
             aplicarEstilosTicket();
 
@@ -33,86 +60,9 @@ async function loadOpenTickets() {
 
     }catch (error) {
         console.error('Error cargando los datos:', error);
+        console.log(`${error}: hubo un error en la obtención de los datos`)
     }
 }
 
 //Ejecuta la función al cargar la página
 window.onload = loadOpenTickets;
-
-// ------------------------------------------------------------------------
-//                          Tickets completados
-// ------------------------------------------------------------------------
-
-// Obtiene los datos de los tickets de un json y, con ellos, llama al js de
-// componentes para crear, elemento por elemento, el ticket
-async function loadClosedTickets() {
-    try {
-        //Con un fetch, lee los datos de los tickets almacenados
-        const response = await fetch('datos.json');
-        const datos = await response.json();
-        
-        //asigna cada dato a una variable
-        for (let i = 0; i < datos.length; i++) {
-            
-            let dataTicketId = datos[i].ticketId;
-            let dataTticketDate = datos[i].ticketDate;
-            let dataTticketTitle = datos[i].ticketTitle;
-            let dataTticketDescription = datos[i].ticketDescription;
-            let dataTticketPrio = datos[i].ticketPrio;
-            let dataTticketState = datos[i].ticketState;
-
-            //con una función ya definida, crea el elemento del ticket
-            const completedTicketContainer = document.getElementById('container__completed');
-
-            // // Inyectar Ticket al contenedor
-            completedTicketContainer.appendChild(createTicket(dataTicketId, dataTticketDate, dataTticketTitle, dataTticketDescription, dataTticketPrio, dataTticketState));
-
-            //aplica los estilos del ticket según su información 
-            aplicarEstilosTicket();
-
-        }
-
-    }catch (error) {
-        console.error('Error cargando los datos:', error);
-    }
-}
-
-// window.onload = loadClosedTickets;
-
-// // ------------------------------------------------------------------------
-// //                          Todos los tickets
-// // ------------------------------------------------------------------------
-
-async function loadAllTickets() {
-    try {
-        //Con un fetch, lee los datos de los tickets almacenados
-        const response = await fetch('datos.json');
-        const datos = await response.json();
-        
-        //asigna cada dato a una variable
-        for (let i = 0; i < datos.length; i++) {
-            
-            let dataTicketId = datos[i].ticketId;
-            let dataTticketDate = datos[i].ticketDate;
-            let dataTticketTitle = datos[i].ticketTitle;
-            let dataTticketDescription = datos[i].ticketDescription;
-            let dataTticketPrio = datos[i].ticketPrio;
-            let dataTticketState = datos[i].ticketState;
-
-            //con una función ya definida, crea el elemento del ticket
-            const allTicketContainer = document.getElementById('container__completed');
-
-            // // Inyectar Ticket al contenedor
-            allTicketContainer.appendChild(createTicket(dataTicketId, dataTticketDate, dataTticketTitle, dataTticketDescription, dataTticketPrio, dataTticketState));
-
-            //aplica los estilos del ticket según su información 
-            aplicarEstilosTicket();
-
-        }
-
-    }catch (error) {
-        console.error('Error cargando los datos:', error);
-    }
-}
-
-// window.onload = loadAllTickets;

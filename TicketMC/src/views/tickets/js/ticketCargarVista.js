@@ -9,7 +9,7 @@ if (rol == 'user'){
 
 const solveSupportTicketBtn = document.getElementById('details__header--response-btn');
 
-if (rol !== 'tech'){
+if (rol !== 'admin'){
     solveSupportTicketBtn.style.display = 'none';
 }else{
     solveSupportTicketBtn.style.display = 'block';

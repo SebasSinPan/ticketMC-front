@@ -102,6 +102,11 @@ let createTicketCreator = () => {
         radioInput.value = prio.toLowerCase();
         if (prio === "Baja") radioInput.checked = true;
 
+        // Agregar el atributo required solo al primer radio
+        if (index === 0) {
+            radioInput.required = true;
+        }
+
         const radioLabel = document.createElement("label");
         radioLabel.setAttribute("for", `create__ticket-prio-${prio.toLowerCase()}`);
         radioLabel.textContent = prio;
@@ -244,4 +249,120 @@ let createTicket = (id, fecha, title, description, prio, state) =>{
     ticketDiv.appendChild(invisibleInfo);
 
     return ticketDiv;
+}
+
+let createTicketCompleted = (ticketId, ticketDate, ticketTitle, ticketState, solveTech, solveDate, solveDescription, tickerUser, ticketDescription, ticketPrio) => {
+    // Crea el contenedor principal
+    const completedTicketSection = document.createElement('section');
+    completedTicketSection.className = 'container__completed--ticket';
+
+    // Div título del ticket
+    const completedTicketTitleDiv = document.createElement('div');
+    completedTicketTitleDiv.className = 'completed--ticket-title';
+
+    // Título del ticket
+    const ticketTitleElement = document.createElement('h2');
+    ticketTitleElement.textContent = ticketTitle;
+
+    // Estado
+    const statusElement = document.createElement('span');
+    statusElement.textContent = ticketState;
+
+    // Inyección al Div del título
+    completedTicketTitleDiv.appendChild(ticketTitleElement);
+    completedTicketTitleDiv.appendChild(statusElement);
+
+    // Div solución
+    const completedTicketSolutionDiv = document.createElement('div');
+    completedTicketSolutionDiv.className = 'completed--ticket-solution';
+
+    // Título de la solución
+    const ticketSolutionTitleDiv = document.createElement('div');
+    ticketSolutionTitleDiv.className = 'ticket-solution-title';
+
+    // Título y fecha de la solución
+    const solutionTitleElement = document.createElement('h3');
+    solutionTitleElement.textContent = solveTech;
+
+    const solutionDateElement = document.createElement('span');
+    solutionDateElement.textContent = solveDate;
+
+    // Inyección al Div de solución
+    ticketSolutionTitleDiv.appendChild(solutionTitleElement);
+    ticketSolutionTitleDiv.appendChild(solutionDateElement);
+    completedTicketSolutionDiv.appendChild(ticketSolutionTitleDiv);
+
+    // Párrafo descripción de la solución
+    const solutionDescriptionElement = document.createElement('p');
+    solutionDescriptionElement.textContent = solveDescription;
+
+    // Inyección a Div solución
+    completedTicketSolutionDiv.appendChild(solutionDescriptionElement);
+
+    // Div problema
+    const completedTicketProblemDiv = document.createElement('div');
+    completedTicketProblemDiv.className = 'completed--ticket-problem';
+
+    // Título del problema
+    const ticketProblemTitleDiv = document.createElement('div');
+    ticketProblemTitleDiv.className = 'ticket-problem-title';
+
+    // Título y fecha del problema
+    const userTitleElement = document.createElement('h3');
+    userTitleElement.textContent = tickerUser;
+
+    const problemDateElement = document.createElement('span');
+    problemDateElement.textContent = ticketDate;
+
+    // Inyección al Div del problema
+    ticketProblemTitleDiv.appendChild(userTitleElement);
+    ticketProblemTitleDiv.appendChild(problemDateElement);
+    completedTicketProblemDiv.appendChild(ticketProblemTitleDiv);
+
+    // Párrafo descripción del problema
+    const problemDescriptionElement = document.createElement('p');
+    problemDescriptionElement.textContent = ticketDescription;
+
+    // Inyección a Div problema
+    completedTicketProblemDiv.appendChild(problemDescriptionElement);
+
+    // Div detalles
+    const completedTicketDetailsDiv = document.createElement('div');
+    completedTicketDetailsDiv.className = 'completed--ticket-details';
+
+    // Botón para ver detalles
+    const detailsButton = document.createElement('button');
+    detailsButton.id = 'completed-open-details';
+    detailsButton.className = 'completed-open-details';
+    detailsButton.textContent = 'Ver detalles del ticket';
+
+    // Div info invisible
+    const invisibleInfo = document.createElement('div');
+    invisibleInfo.className = 'ClosedTicket-hidden-info';
+    
+    // Párrafo del id
+    const hiddenId = document.createElement('p');
+    hiddenId.className = 'ClosedTicket-hidden-info__id';
+    hiddenId.textContent = ticketId;
+
+    // Párrafo del id
+    const hiddenPrio = document.createElement('p');
+    hiddenPrio.className = 'ClosedTicket-hidden-info__prio';
+    hiddenPrio.textContent = ticketPrio;
+
+    // Inyección información invisible
+    invisibleInfo.appendChild(hiddenId)
+    invisibleInfo.appendChild(hiddenPrio)
+
+    // Inyección al Div de detalles
+    completedTicketDetailsDiv.appendChild(detailsButton);
+
+    // Inyección al contenedor principal
+    completedTicketSection.appendChild(completedTicketTitleDiv);
+    completedTicketSection.appendChild(completedTicketSolutionDiv);
+    completedTicketSection.appendChild(completedTicketProblemDiv);
+    completedTicketSection.appendChild(completedTicketDetailsDiv);
+    completedTicketSection.appendChild(invisibleInfo);
+
+    return completedTicketSection;
 }

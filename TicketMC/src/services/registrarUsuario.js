@@ -101,6 +101,7 @@ async function enviarRegistro(data) {
         registerAlertSuccess.showModal();
         setTimeout(()=>{
             registerAlertSuccess.close();
+            window.location.reload(true);
         },2000)
 
 

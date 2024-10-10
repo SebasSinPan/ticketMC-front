@@ -71,10 +71,10 @@ MODAL.addEventListener('click', e => {
     }
 });
 
-
 // ------------------------------------------------------------------------
 //                          Resolver tickets
 // ------------------------------------------------------------------------
+
 
 //botones que habilitan o desabilitan la plantilla de respuesta
 const resolveTicketBtn = document.getElementById('details__header--response-btn');
@@ -129,3 +129,79 @@ cancelTicketResponseBtn.addEventListener('click', ev =>{
         window.location.reload(true);
     })
 })
+
+// ------------------------------------------------------------------------
+//                    Detalles de tickets resueltos
+// ------------------------------------------------------------------------
+
+// const completedTicketsContainer = getElementById('container__completed');
+const openResponseBtn = document.getElementById('completed-open-details');
+const responseSumaryModal = document.getElementById('completed--deatils-modal');
+
+openResponseBtn.addEventListener('click', ()=>{
+    responseSumaryModal.showModal();
+})
+
+responseSumaryModal.addEventListener('click', e =>{
+    const dialogDimensions = responseSumaryModal.getBoundingClientRect();
+
+    //TODO : La animación de entrada no funciona
+    responseSumaryModal.classList.add('fade-in-modal');
+    responseSumaryModal.showModal();
+    responseSumaryModal.addEventListener('animationend', ()=>{
+        responseSumaryModal.classList.remove('fade-in-modal');
+    })
+
+    if (
+        e.clientX < dialogDimensions.left ||
+        e.clientX > dialogDimensions.right ||
+        e.clientY < dialogDimensions.top ||
+        e.clientY > dialogDimensions.bottom
+    ) {
+        //agrega una animación a la salida del modal
+        responseSumaryModal.classList.add('fade-out-modal');
+        
+        //tras ocurrir la animación, la animación se remueve
+        responseSumaryModal.addEventListener('animationend', () => {
+            responseSumaryModal.close();
+            responseSumaryModal.classList.remove('fade-out-modal');
+        }, {once: true});
+    }
+})
+
+// completedTicketsContainer.addEventListener('click', ev => {
+    
+//     const closedTicketBtn = ev.target.closest('.completed-open-details');
+
+//         //Datos únicos de la plantilla
+//         const id = ticket.querySelector('.ticket-hidden-info__id').textContent;
+//         const date = ticket.querySelector('.details--date').textContent;
+        
+//         //Datos comportidos
+//         const title = ticket.querySelector('.title--name').textContent;
+//         const prio = ticket.querySelector('.title--prio').textContent;
+//         const description = ticket.querySelector('.ticket--description p').textContent;
+//         const state = ticket.querySelector('.ticket-state').textContent;
+        
+//         //Datos impresos en la modal de detalles del ticket
+//         MODAL.querySelector('.details--title').textContent = title;
+//         MODAL.querySelector('.details--state').textContent = state;
+//         MODAL.querySelector('.details--prio').textContent = prio;
+//         MODAL.querySelector('.details--description').textContent = description;
+
+//         //Datos impresos en la plantilla de solución del ticket
+//         mainContainerResponse.querySelector('.resolve--title-number').textContent = id;
+//         mainContainerResponse.querySelector('.response-ticket-title__name').textContent = title;
+//         mainContainerResponse.querySelector('.response-ticket-prio__data').textContent = prio;
+//         mainContainerResponse.querySelector('.response-ticket-description__text').textContent = description;
+
+//         aplicarEstilosModal();  
+//         MODAL.classList.add('fade-in-modal');
+//         MODAL.showModal();
+
+//         // evento que limpia la clase de animación una vez que la animación termine
+//         MODAL.addEventListener('animationend', () => {
+//             MODAL.classList.remove('fade-in-modal');
+//         }
+//     );
+// });
