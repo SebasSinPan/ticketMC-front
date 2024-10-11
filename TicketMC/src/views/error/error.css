@@ -1,0 +1,28 @@
+body{
+    background-color: #1F2937;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+}
+
+body div{
+    height: 300px;
+    width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #EBEBEB;
+    position: relative;
+    top: 100px;
+    border-radius: 10px;
+}
+
+body div h2{
+    font-size: 30px;
+}
+
+body div p{
+    font-size: 18px;
+}

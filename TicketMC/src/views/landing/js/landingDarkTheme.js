@@ -1,8 +1,6 @@
-// const darkTheme = 'algo';
 const root = document.documentElement;
 
-if (
-(algo = true) || 
+if ( 
 (window.matchMedia('(prefers-color-scheme: dark)').matches) 
 ){
     root.style.setProperty('--bg-light-white', '#1F2937');

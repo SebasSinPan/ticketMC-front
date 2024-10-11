@@ -2,12 +2,6 @@
 //Modificar datos comunes de la cuenta
 //-------------------------------------------------------------
 
-
-
-//-------------------------------------------------------------
-//Modificar datos comunes de la cuenta
-//-------------------------------------------------------------
-
 const modUserDataForm = document.getElementById('modal__contenido--datos-usuario-form');
 
 //función que valida el dato ingresado como nombre
@@ -25,21 +19,6 @@ const validarNuevoNombre = (nombre)=>{
     return isValid;
 } 
 
-//función que valida el dato ingresado como correo
-const validarNuevoCorreo = (correo)=>{
-    let isValid = true;
-
-    //patrón que debe seguir el input
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (!emailPattern.test(correo)){
-        isValid = false;
-        document.getElementById('contenido--input_errorEmail').style = 'block';
-    }
-
-    return isValid;
-}
-
 //función que valida el dato ingresado como teléfono
 const validarNuevoTelefono = (telefono)=>{
     let isValid = true;
@@ -55,26 +34,58 @@ const validarNuevoTelefono = (telefono)=>{
     return isValid;
 }
 
+const validarValidaciones = (val1, val2) =>{
+    let isValid = true;
+    if(!(val1 && val2)) {
+        isValid = false;
+    }
+    return isValid;
+}
+
+async function actualizarDatosUsuario(data){
+    let URL = 'https://ticketproject-br3d.onrender.com';
+    try {
+        const response = await fetch(`${URL}/profiles/${localStorage.getItem('id')}`, {
+            method: 'PUT', 
+            headers: {
+                'Content-Type': 'application/json',
+                'token' : localStorage.getItem('validationCode')
+            },
+            body: JSON.stringify(data)
+        });
+
+        // se verifica si la respuesta fue exitosa
+        if (!response.ok) {
+            throw new Error('Error en la solicitud: ' + response.statusText);
+        }
+
+        const respuesta = await response.json();
+        console.log('Respuesta de la API:', respuesta);
+        
+
+    }catch (error){
+        console.error('Error al enviar datos: ', error);
+    }
+}
+
 modUserDataForm.addEventListener('submit', ev => {
     ev.preventDefault();
 
     const newName = document.getElementById('updateUserData__nombre').value;
-    const newMail = document.getElementById('updateUserData__correo').value;
     const newTel = document.getElementById('updateUserData__tel').value;
 
-    validarNuevoNombre(newName);
-    validarNuevoCorreo(newMail);
-    validarNuevoTelefono(newTel);
+    let val1 = validarNuevoNombre(newName);
+    let val2 = validarNuevoTelefono(newTel);
 
+    if (validarValidaciones(val1, val2)){
+        let data = {
+            id: localStorage.getItem('id'),
+            fullname: newName,
+            phone: newTel
+        }
+        
+        actualizarDatosUsuario(data);
 
-    //------------------------------------
-    // TODO : Revisar bien la manera de poder validar y enviar solo
-    // un dato, sin necesidad de hacer un fetch por dato
-    //------------------------------------
+    }
+
 })
-
-//-------------------------------------------------------------
-//Modificar contraseña
-//-------------------------------------------------------------
-
-const modUserPassForm = document.getElementById('data-modal-pass');

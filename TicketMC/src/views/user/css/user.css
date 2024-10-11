@@ -76,6 +76,13 @@ body{
     color: var(--main-color);
 }
 
+.nav p:hover{
+    font-weight: 600;
+    font-size: 30px;
+    color: var(--main-color);
+    cursor: pointer;
+}
+
 .nav ul{
     display: flex;
 }
@@ -85,11 +92,7 @@ body{
     display: inline-block;
     padding: 10px;
 }
-/* 
-.nav ul li img{
-    width: 25px;
-    height: 25px;
-} */
+
 
 .nav ul li p{
     width: 50px;
@@ -145,7 +148,7 @@ body{
     position: relative;
     border-radius: 10px;
     background-color: var(--bg-light-white);
-    box-shadow: 0 0px 10px var(--box-shadow-color);
+    box-shadow: 0 0px 5px var(--box-shadow-color);
     z-index: 20;
     transition: transform .3s ease-out;
 }

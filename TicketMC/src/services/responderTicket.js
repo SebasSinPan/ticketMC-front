@@ -47,6 +47,7 @@ if (localStorage.getItem('rol') != 'user') {
             ticketAlertSuccessModal.showModal();
             setTimeout(()=>{
                 ticketAlertSuccessModal.close();
+                ticketAlertSuccessModal.style.display = 'none';
                 window.location.reload(true);
             },1500)
 
@@ -58,6 +59,8 @@ if (localStorage.getItem('rol') != 'user') {
             ticketAlertErrorModal.showModal();
             setTimeout(()=>{
                 ticketAlertErrorModal.close();
+                ticketAlertErrorModal.style.display = 'none';
+
             },1500)
         }
     }
@@ -84,9 +87,7 @@ if (localStorage.getItem('rol') != 'user') {
             "status": "cerrado",
             "priority": responseTicketPrio,
             "title_solution": ticketTitle,
-            "date_solution": responseTicketDate(),
-            "tech_description": ticketSolutionText,
-            "category": 'Ticket de soporte'
+            "date_solution": responseTicketDate()
         }
     
         enviarDatosTicket(respuestaTicket, actualSolvingTicketId);

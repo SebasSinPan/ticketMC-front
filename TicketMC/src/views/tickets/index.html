@@ -9,15 +9,13 @@
 </head>
 <body>
     <header>
-        <!-- <a href="#">TicketMC</a> -->
         <section class="logo">
-            <p>
+            <p id="header__logo-btn">
                 TicketMC
             </p>
         </section>
         <section class="profile">
-            <!-- <img src="" alt="imagen_usuario"> -->
-            <span>Mi perfil</span>
+            <span id="header__profile-btn">Mi perfil</span>
             <p></p>
             <ul>
                 <li>Mi perfil</li>
@@ -46,7 +44,7 @@
                         <p id="config-modal--exit" class="config-modal--exit">x</p>
                     </div>
                     <div class="config-modal--profile">
-                        <button>Ver perfil</button>
+                        <button id="config-modal--profile-btn">Ver perfil</button>
                     </div>
                     <div class="cofig-modal--mailing">
                         <h4>Preferencias de notificaciones</h4>
@@ -68,7 +66,7 @@
                             <p>Modo oscuro</p>
                         </div>
                     </div>
-                    <button>
+                    <button id="config-button-exit">
                         <label for="">
                         <img src="img/ticket_exit.png" alt="">
                         </label> 
@@ -78,6 +76,13 @@
             </section>
         </nav>
         <main id="container__ticket" class="container__ticket">
+            <dialog id="confirmar_borrar_ticket">
+                <p>¿Seguro que desea eleminar el ticket?</p>
+                <div>
+                    <button id="confirmar_borrar_ticket_btn_cancel">Cancelar</button>
+                    <button id="confirmar_borrar_ticket_btn_confirm">Confirmar</button>
+                </div>
+            </dialog>
             <dialog id="modal" class="container__ticket--details">
                 <section class="details">
                     <div class="details__header--container">
@@ -87,6 +92,7 @@
                             </div>
                             <div class="details__header--response">
                                 <button id="details__header--response-btn">Responder</button>
+                                <span id="ticket-erase-container"><img id="ticket-erase" src="img/ticket_delete.png" alt=""></span>
                             </div>
                         </div>
                         <div class="details__data">
@@ -182,29 +188,6 @@
             <section id="container__history" class="container__history">
             </section>
             <section id="container__completed" class="container__completed">
-                <section class="container__completed--ticket">
-                    <div class="completed--ticket-title">
-                        <h2>Nombre del ticket</h2>
-                        <span>Cerrado</span>
-                    </div>
-                    <div class="completed--ticket-solution">
-                        <div class="ticket-solution-title">
-                            <h3>Tech name</h3>
-                            <span>Fecha</span>
-                        </div>
-                        <p>Solution description</p>
-                    </div>
-                    <div class="completed--ticket-problem">
-                        <div class="ticket-problem-title">
-                            <h3>Usuario name</h3>
-                            <span>Fecha</span>
-                        </div>
-                        <p>Problem description</p>
-                    </div>
-                    <div class="completed--ticket-details">
-                        <button id="completed-open-details">Ver detalles del ticket</button>
-                    </div>
-                </section>
                 <dialog id="completed--deatils-modal" class="container__completed--details container__ticket--details">
                     <section class="details">
                         <div class="details__header--container details__header--container-response">
@@ -234,14 +217,6 @@
                                 Lorem: Ipsum dolor sit sit amet, consectetur adipiscing elit. Donec ornare enim a efficitur laoreet. Sed ullamcorper laoreet magna, eget ornare justo ornare eu. Aenean sagittis, ipsum a laoreet maximus, leo mauris vehicula magna, ut facilisis ipsum lacus eget ipsum. Vestibulum elementum elit in nisi tempus gravida. Quisque sit amet ante. eget ornare justo ornare eu. Aenean sagittis, ipsum a laoreet maximus, leo mauris vehicula magna, ut facilisis ipsum lacus eget ipsum. Vestibulum elementum e
                             </p>
                         </div>
-                        <!-- <div class="details__images">
-                            <p>Imágenes anexas</p>
-                            <div>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                            </div>
-                        </div> -->
                         <div class="details__response">
                             <div class="details__response--title">
                                 <h3>Respuesta: </h3>
@@ -253,14 +228,6 @@
                             <div class="details__response--description">
                                 <p class="response--description-text">Lorem Ipsum</p>
                             </div>
-                            <!-- <div class="details__response--images details__images">
-                                <p>Imágenes anexas</p>
-                                <div>
-                                    <p></p>
-                                    <p></p>
-                                    <p></p>
-                                </div>
-                            </div> -->
                         </div>
                     </section>
                 </dialog>
@@ -279,17 +246,24 @@
             </dialog>
         </main>
     </div>
+
+    <script src="../../services/autorizacionRuta.js"></script>
+
     <script src="js/ticketComponents.js"></script>
     <script src="js/ticketCargarVista.js"></script>
     <script src="js/ticketConfigModal.js"></script>
+    <script src="js/ticketExit.js"></script>
     <script src="js/ticketCreatorStyle.js"></script>
     <script src="js/ticketStyle.js"></script>
     <script src="js/ticketAssig.js"></script>
     <script src="js/ticketModalsTemplates.js"></script>
     <script src="js/ticketViewTransition.js"></script>
+    <script src="js/ticketRoutes.js"></script>
     <script src="js/ticketDarkTheme.js"></script>
 
     <script src="../../services/crearTIckets.js"></script>
     <script src="../../services/responderTicket.js"></script>
+    <script src="../../services/borrarTicket.js"></script>
+
 </body>
 </html>

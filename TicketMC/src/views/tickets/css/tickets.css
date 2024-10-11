@@ -73,6 +73,7 @@ header .logo p{
     font-size: 30px;
     font-weight: 600;
     color: var(--main-color);
+    cursor: pointer;
 }
 
 header .profile{
@@ -84,6 +85,7 @@ header .profile{
 
 header .profile span{
     font-weight: 600;
+    cursor: pointer;
 }
 
 header .profile p{
@@ -495,6 +497,11 @@ header ul li{
     font-weight: 600;
 }
 
+.ticket .ticket--title .title--name_data{
+    display: flex;
+    justify-content: space-between;
+}
+
 .ticket .ticket--title .title--prio{
     display: inline-block;
     text-align: center;
@@ -507,6 +514,11 @@ header ul li{
     border-bottom-left-radius: 10px 10px;
     border-top-right-radius: 10px 10px;
     border-bottom-right-radius: 10px 10px;
+}
+
+.title--ticket-date{
+    font-weight: 600;
+    font-size: 14px;
 }
 
 .ticket .ticket--description{
@@ -544,11 +556,20 @@ header ul li{
     border-bottom-right-radius: 10px 10px;
 }
 
+.ticket .ticket--state-container{
+    display: flex;
+    justify-content: space-between;
+}
+
 .ticket-hidden-info{
     display: none;
 }
 
 .closeTicket-hidden-info{
+    display: none;
+}
+
+.ClosedTicket-hidden-info{
     display: none;
 }
 
@@ -602,6 +623,21 @@ header ul li{
 .details .details__header--title h2{
     font-size: 20px;
     font-weight: 600;
+}
+
+.details .details__header--response #ticket-erase-container{
+    display: none;
+}
+
+.details .details__header--response img#ticket-erase{
+    width: 30px;
+    height: 30px;
+    transition: transform .2s ease-in;
+}
+
+.details .details__header--response img#ticket-erase:hover{
+    transform: scale(1.1);
+    cursor: pointer;
 }
 
 .details .details__header--response button{
@@ -1421,6 +1457,14 @@ header ul li{
     .container__ticket--details {
         width: calc(650px - (800px - 100vw));
     }
+    
+    .ticket .ticket-erase img{
+    position: absolute;
+    left: 260px;
+    bottom: 0px;
+    width: 25px !important;
+    height: 25px !important;
+    }
 }
 
 /* --------------------------------------------------------------- */
@@ -1429,4 +1473,40 @@ header ul li{
 
 .filter-contrast{
     filter: invert(1);
+}
+
+/* --------------------------------------------------------------- */
+/* Clases para estilización posterior */
+/* --------------------------------------------------------------- */
+
+#confirmar_borrar_ticket{
+    width: 380px;
+    height: 160px;
+    font-size: 25px;
+    background-color: var(--bg-light-gray);
+    color: var(--font-base-color);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    padding: 20px;
+}
+
+#confirmar_borrar_ticket button{
+    color: var(--font-btn-white);
+    font-weight: 600;
+    background-color: var(--state-unseen);
+    padding: 7px  15px;
+    margin: 15px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+#confirmar_borrar_ticket button:last-child{
+    background-color: var(--cancel-color);
+}
+
+#confirmar_borrar_ticket button:hover{
+    filter: contrast(1.5);
 }

@@ -81,60 +81,46 @@ if (localStorage.getItem('rol') == 'user'){
         return new Date.stringify.iso
     }
 
-    //evita problemas con el ingreso de técnicos
-    if (localStorage.getItem('rol') == 'user') {
-
-        //extrae la información del formulario, la asigna a variables y crea
-        //un arreglo que se envia al backend
-        formCrearTicket.addEventListener('submit', async ev => {
-            ev.preventDefault();
+    //extrae la información del formulario, la asigna a variables y crea
+    //un arreglo que se envia al backend
+    formCrearTicket.addEventListener('submit', async ev => {
+        ev.preventDefault();
+    
+        //Inputs directos
+        const ticketNombre = document.getElementById('create_ticket_name').value;
+        const ticketDescripcion = document.getElementById('create_ticket_description').value;
         
-            //Inputs directos
-            const ticketNombre = document.getElementById('create_ticket_name').value;
-            const ticketDescripcion = document.getElementById('create_ticket_description').value;
-            
-            //Input tipo radio
-            const ticketPrio = document.querySelector('input[name="radio_opt_group"]:checked').value;
-            
-            //Archivos
-            const ticketFiles = document.getElementById('create_ticket_files');
-            const allFiles = ticketFiles.files;
+        //Input tipo radio
+        const ticketPrio = document.querySelector('input[name="radio_opt_group"]:checked').value;
         
-            //Arreglo con los datos adquiridos
-            const ticketData = {
-                title : ticketNombre,
-                description : ticketDescripcion,
-                status : 'abierto',
-                priority : ticketPrio,
-            }
-            // files : []
+        //Archivos
+        const ticketFiles = document.getElementById('create_ticket_files');
+        const allFiles = ticketFiles.files;
+    
+        //Arreglo con los datos adquiridos
+        const ticketData = {
+            title : ticketNombre,
+            description : ticketDescripcion,
+            status : 'abierto',
+            priority : ticketPrio,
+            category: 'ticket'
+        }
+    
+        //LLama la función que se comunica con el back
+        //esto para enviar los datos obtenidos en el formulario al backend
+        // enviarDatosTicket(ticketData);
+        enviarDatosTicket(ticketData);
+    
+        //una vez enviados los datos, se reinicia el formulario 
+        //y se cierra el modal
+    
+        formCrearTicket.reset();
+        modalCrearTicket.classList.add('fade-out-modal');
+        setTimeout(()=>{
+            modalCrearTicket.close();
+            modalCrearTicket.classList.remove('fade-out-modal');
+        }, 300)
         
-            //Si el usuario sí anexó archivos, se añaden al arreglo con
-            //el resto de datos
-            // if (allFiles.lenght > 0){
-            //     for (let i = 0; i < archivos.lenght; i++){
-            //         ticketData.files.push(allFiles[i])
-            //     }
-            // }
-        
-            //LLama la función que se comunica con el back
-            //esto para enviar los datos obtenidos en el formulario al backend
-            // enviarDatosTicket(ticketData);
-            enviarDatosTicket(ticketData);
-        
-            //una vez enviados los datos, se reinicia el formulario 
-            //y se cierra el modal
-        
-            formCrearTicket.reset();
-            modalCrearTicket.classList.add('fade-out-modal');
-            setTimeout(()=>{
-                modalCrearTicket.close();
-                modalCrearTicket.classList.remove('fade-out-modal');
-            }, 300)
-            
-        })
-    }
+    })
 
 }
-//Se optó por este y no por form data por una mayor maniobrabilidad con 
-//los datos

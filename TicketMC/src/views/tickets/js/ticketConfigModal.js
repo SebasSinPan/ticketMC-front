@@ -47,7 +47,7 @@ configModal.addEventListener('click', e =>{
 });
 
 //--------------------------------------------------------------------
-//determinación del tema en las preferencias del usuario
+//      Determinación del tema en las preferencias del usuario
 //--------------------------------------------------------------------
 
 const temaOscuroCheckbox = document.getElementById('tema_oscuro');
@@ -92,4 +92,6 @@ temaOscuroCheckbox.addEventListener('change', () => {
     themeColorPreference();
 });
 
-//TODO : Si se carga la página en modo oscuro, no funciona
+//--------------------------------------------------------------------
+//            Rutas asociadas
+//--------------------------------------------------------------------

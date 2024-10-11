@@ -10,13 +10,9 @@
 </head>
 <body>
     <nav class="nav">
-        <p>TICKET MC</p>
-        <!-- <img src="" alt="logo_TicketMc"> -->
+        <p id="userNavLogo">TICKET MC</p>
         <ul>
             <li>
-                <!-- <a class="acount" href="#">
-                <img src="#" alt="imagen de perfil">
-                </a> -->
                 <p></p>
             </li>
         </ul>
@@ -27,9 +23,9 @@
                 <article class="user__container--profile user__options">
                     <img src="img/User_icon_user.png" alt="foto de perfil">
                     <h3>Información personal</h3>
-                    <p>Nombre: <span>info</span></p>
-                    <p>Correo electrónico: <span>info</span></p>
-                    <p>Teléfono: <span>info</span></p>
+                    <p>Nombre: <span id="user__profile--nombre">info</span></p>
+                    <p>Correo electrónico: <span id="user__profile--correo">info</span></p>
+                    <p>Teléfono: <span id="user__profile--tel">info</span></p>
                 </article>
                 <article class="user__container--tickets user__options">
                     <div>
@@ -37,7 +33,7 @@
                         <h3>Visualizar tickets</h3>
                     </div>
                     <p>Revisa y gestiona tus tickets actuales y pasados.</p>
-                    <button>Ver tickets</button>
+                    <button id="user__option--tickets-btn">Ver tickets</button>
                 </article>
                 <article class="user__container--data user__options">
                     <div class="options--title">
@@ -121,15 +117,6 @@
                                             >
                                             <label for="">Nombre</label>
                                             <label id="contenido--input_errorName">Nombre no válido</label>
-                                        </div>
-                                        <div class="modal__contenido--input">
-                                            <input type="email"
-                                                    id="updateUserData__correo" class="correo"
-                                                    placeholder="Correo"
-                                                    required
-                                            >
-                                            <label for="" id="label-input-correo">Correo</label>
-                                            <label id="contenido--input_errorEmail">Correo no válido</label>
                                         </div>
                                         <div class="modal__contenido--input">
                                             <input type="number"
@@ -222,7 +209,7 @@
                         <p>¿Está seguro que desea que desea cerrar sesión?</p>
                         <div class="modalClose__btns">
                             <button id="modalClose__btns--close">Cancelar</button>
-                            <button>Cerrar sesión</button>
+                            <button id="modalClose__btns--confirm">Cerrar sesión</button>
                         </div>
                     </dialog>
                 </article>
@@ -231,10 +218,15 @@
         </main>
         <div id="bg-decoration"></div>
     </section>
+    <script src="../../services/autorizacionRuta.js"></script>
+    
     <script src="js/user.js"></script>
     <script src="js/userPassModal.js"></script>
+    <script src="js/userRoutes.js"></script>
+    <script src="js/userExit.js"></script>
     <script src="js/userDarkTheme.js"></script>
     
+    <script src="../../services/userObtenerDatos.js"></script>
     <script src="../../services/userModificarDatos.js"></script>
     <script src="../../services/userChangePass.js"></script>
     <script src="../../services/userSupportRequiest.js"></script>

@@ -178,7 +178,7 @@ let createTicketCreator = () => {
 }
 
 //crea los tickets que se muestran al usuario
-let createTicket = (id, fecha, title, description, prio, state) =>{
+const createTicket = (id, fecha, title, description, prio, state) => {
     // Crea el contenedor principal
     const ticketDiv = document.createElement('div');
     ticketDiv.className = 'ticket select-ticket';
@@ -192,14 +192,27 @@ let createTicket = (id, fecha, title, description, prio, state) =>{
     titleElement.className = 'title--name';
     titleElement.textContent = title;
 
+    // Div para prioridad y fecha
+    const nameDataDiv = document.createElement('div');
+    nameDataDiv.className = 'title--name_data';
+
     // Creación prioridad
     const priorityElement = document.createElement('span');
     priorityElement.className = 'title--prio ticket-prio';
     priorityElement.textContent = prio;
 
-    // Inyección a Div título
+    // Creación fecha
+    const dateElement = document.createElement('span');
+    dateElement.className = 'title--ticket-date';
+    dateElement.textContent = fecha;
+
+    // Inyección a Div de datos del nombre
+    nameDataDiv.appendChild(priorityElement);
+    nameDataDiv.appendChild(dateElement);
+
+    // Inyección al Div título
     titleDiv.appendChild(titleElement);
-    titleDiv.appendChild(priorityElement);
+    titleDiv.appendChild(nameDataDiv);
 
     // Div descripción
     const descriptionDiv = document.createElement('div');
@@ -209,12 +222,12 @@ let createTicket = (id, fecha, title, description, prio, state) =>{
     const descriptionElement = document.createElement('p');
     descriptionElement.textContent = description;
 
-    // Inyección a Div descipción
+    // Inyección a Div descripción
     descriptionDiv.appendChild(descriptionElement);
 
     // Div estado
     const stateDiv = document.createElement('div');
-    stateDiv.className = 'ticket--state';
+    stateDiv.className = 'ticket--state ticket--state-container';
 
     // Creación Estado
     const stateElement = document.createElement('span');
@@ -233,14 +246,14 @@ let createTicket = (id, fecha, title, description, prio, state) =>{
     hiddenId.className = 'ticket-hidden-info__id';
     hiddenId.textContent = id;
 
-    // Párrafo del id
+    // Párrafo de la fecha
     const hiddenDate = document.createElement('p');
     hiddenDate.className = 'ticket-hidden-info__date';
     hiddenDate.textContent = fecha;
 
     // Inyección información invisible
-    invisibleInfo.appendChild(hiddenId)
-    invisibleInfo.appendChild(hiddenDate)
+    invisibleInfo.appendChild(hiddenId);
+    invisibleInfo.appendChild(hiddenDate);
 
     // Inyección al Div del ticket
     ticketDiv.appendChild(titleDiv);
@@ -249,7 +262,7 @@ let createTicket = (id, fecha, title, description, prio, state) =>{
     ticketDiv.appendChild(invisibleInfo);
 
     return ticketDiv;
-}
+};
 
 let createTicketCompleted = (ticketId, ticketDate, ticketTitle, ticketState, solveTech, solveDate, solveDescription, tickerUser, ticketDescription, ticketPrio) => {
     // Crea el contenedor principal
